@@ -1,0 +1,20 @@
+---
+import { cn } from '../../utils/utils.ts'
+import MiniChip from '../MiniChip.astro'
+
+const { skills } = Astro.props
+---
+
+<div class="flex flex-row gap-2 mt-1 justify-start items-start">
+    <div class="text-sm font-medium text-cloud-300 my-px">Skills</div>
+    <div class="flex flex-row flex-wrap gap-1">
+        {
+            skills.map(
+                (
+                    { name, color }: { name: string; color: string },
+                    _i: number
+                ) => <MiniChip label={name} accentColor={color} />
+            )
+        }
+    </div>
+</div>

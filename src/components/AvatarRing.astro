@@ -1,0 +1,44 @@
+---
+import tinycolor from 'tinycolor2'
+
+const { ringSize, darken, gradientPercent } = Astro.props
+const colorHex = '#334155'
+const ringColor = tinycolor(colorHex).darken(darken).toHexString()
+const ringWidth = 10
+const innerSize = ringSize * 16
+const outerSize = innerSize + ringWidth
+---
+
+<div>
+	<div
+		class="absolute-center z-10 ring--outer bg-transparent border-[3px] rounded-full"
+	>
+	</div>
+</div>
+
+<style
+	define:vars={{
+		innerSize: `${innerSize}px`,
+		ringColor: `${ringColor}`,
+		gradientPercent: `${gradientPercent}%`,
+	}}
+>
+	.ring--inner {
+		width: var(--innerSize);
+		height: var(--innerSize);
+	}
+	.ring--outer {
+		width: var(--innerSize);
+		height: var(--innerSize);
+		border-color: var(--ringColor);
+		mask-image: linear-gradient(
+			180deg,
+			transparent,
+			rgba(0, 0, 0, 0) var(--gradientPercent),
+			rgb(0 0 0 / 100%)
+		);
+		mask-size: 100%;
+		mask-mode: alpha;
+		mask-repeat: no-repeat;
+	}
+</style>

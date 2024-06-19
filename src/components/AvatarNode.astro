@@ -1,0 +1,21 @@
+---
+const { size } = Astro.props // size in REM unit
+---
+
+
+<div class="node-avatar z-[90] relative bg-slate-700 rounded-full">
+</div>
+
+
+<style define:vars={{
+	avatarSize: `${size}rem`
+}}>
+
+.node-avatar {
+	width: var(--avatarSize);
+	height: var(--avatarSize);
+}
+
+</style>
+
+

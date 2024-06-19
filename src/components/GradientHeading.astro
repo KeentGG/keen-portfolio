@@ -1,0 +1,23 @@
+---
+import { cn } from '../utils/utils.ts'
+
+const { fontSize, gradientClassName } = Astro.props
+---
+
+<div class="flex flex-col justify-center items-center w-fit">
+    <div
+        class={cn(
+            'relative interested-text text-[length:var(--fontSize)] text-black/20 font-bold bg-clip-text',
+            gradientClassName
+        )}
+    >
+        <slot />
+    </div>
+</div>
+
+<style define:vars={{ fontSize }}>
+    .interested-text {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        filter: brightness(1.7) drop-shadow(3px 8px 10px rgba(0, 0, 0, 0.55));
+    }
+</style>

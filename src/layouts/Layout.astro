@@ -1,51 +1,77 @@
 ---
 interface Props {
-	title: string;
+    title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="en" class="h-full bg-cloud-950">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="h-full">
+        <slot />
+    </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+    :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+        );
+    }
+    @font-face {
+        src: url('/fonts/Avenir.ttc') format('ttc');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    /* html { */
+    /*     background: #0e121f; */
+    /*     background-size: 224px; */
+    /* } */
+    code {
+        font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
+    }
+    .absolute-center {
+        @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+    .gradient-color--1 {
+        background-image: radial-gradient(
+                99% 99% at 109% 2%,
+                #00ffe482 40%,
+                #5939e01c 100%
+            ),
+            radial-gradient(99% 99% at 6% 93%, #28f081a8 24%, #073aff00 100%),
+            radial-gradient(
+                160% 154% at 701% -272%,
+                #3216f3ff 21%,
+                #076bfdff 97%
+            );
+        background-blend-mode: normal, normal, normal, normal, multiply, normal;
+    }
+    .gradient-color--2 {
+        background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        background-blend-mode: normal, normal, normal, normal, multiply, normal;
+    }
 </style>

@@ -1,0 +1,14 @@
+---
+import { cn } from '../utils/utils.ts'
+
+const { class: className } = Astro.props
+---
+
+<div
+    class={cn(
+        'flex flex-col justify-center text-center text-cloud-400 border-l border-b border-cloud-700/50 px-6 py-3',
+        className
+    )}
+>
+    <slot />
+</div>

@@ -1,0 +1,27 @@
+---
+const { label } = Astro.props
+---
+
+<div class="relative w-min p-[1px]">
+    <div
+        class="relative whitespace-nowrap z-10 text-sm
+        font-semibold text-[#87a9db] bg-[#212B38] py-1.5
+        px-4 rounded-full"
+    >
+        {label}
+    </div>
+    <div
+        class="z-0 absolute-center w-full h-full rounded-full bg-[#283B54] overflow-hidden *:rounded-full *:aspect-square *:absolute"
+    >
+        <div
+            class="left-[12px] top-[8px] -translate-x-1/2 translate-y-1/2 h-[110%] blur-[12px] bg-[#8DD5F0]"
+        >
+        </div>
+        <div
+            class="right-[8px] top-[6px] translate-x-1/2
+            -translate-y-1/2 h-[110%] blur-[8px]
+            bg-[#8DD5F0]/75"
+        >
+        </div>
+    </div>
+</div>

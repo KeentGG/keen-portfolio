@@ -1,0 +1,38 @@
+---
+const { accentColor, title, photoName } = Astro.props
+const imgPath = `/images/portfolio/logo/${photoName}.png`
+---
+
+<div class="max-h-[12rem] w-min h-full p-2">
+    <div
+        class="flex flex-col items-center
+    bg-gradient-to-br to-slate-50
+        from-[var(--logoAccentColor)] to-25%
+    rounded-2xl py-4 px-4 gap-2 h-full relative overflow-hidden"
+    >
+        <div class="shadow-xl bg-white rounded-lg p-3 z-20">
+            <img
+                class="aspect-square object-contain size-max max-w-[4rem] md:max-w-[4rem]"
+                src={imgPath}
+            />
+        </div>
+        <div
+            class="text-[13px] text-center max-w-[10rem] min-w-[8rem] w-fit
+            font-medium text-slate-500 z-10"
+        >
+            {title}
+        </div>
+
+        <img
+            class="blur-md opacity-65 z-10 absolute bottom-4 right-4 translate-x-1/2 translate-y-1/2 aspect-square
+            object-contain size-max max-h-[8rem]"
+            src={imgPath}
+        />
+    </div>
+</div>
+
+<style
+    define:vars={{
+        logoAccentColor: accentColor,
+    }}
+></style>

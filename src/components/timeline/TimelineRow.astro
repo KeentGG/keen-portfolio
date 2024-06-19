@@ -1,0 +1,32 @@
+---
+import TimelineStep from './TimelineStep.astro'
+import TimelineDate from './TimelineDate.astro'
+import TimelineLearn from './TimelineLearn.astro'
+
+const { heading, subHeading, skills, date } = Astro.props
+---
+
+<div>
+    <TimelineStep />
+    <div class="py-2.5 gap-1">
+        <TimelineDate date={date}>
+            <slot slot="icon" name="icon" />
+            <div class="flex flex-col items-start justify-start">
+                {!!heading && <div>{heading}</div>}
+                {
+                    !!subHeading && (
+                        <div class="text-rose-300 text-base font-light">
+                            {subHeading}
+                        </div>
+                    )
+                }
+            </div>
+        </TimelineDate>
+        <slot />
+        {
+            skills != undefined && skills.length > 0 && (
+                <TimelineLearn skills={skills} />
+            )
+        }
+    </div>
+</div>

@@ -1,0 +1,103 @@
+---
+import PreviewCard from '../components/PreviewCard.astro'
+import CtaShiny from '../components/CtaShiny.astro'
+import GradientHeading from '../components/GradientHeading.astro'
+
+const imgFileType = 'png'
+const imgBasePath = '/images/portfolio'
+const previewList = [
+    {
+        imgFileName: 'pmva',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'ian',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'envko',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'aps',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'wmp',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'sos',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'regis',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'woodbridge',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'pmva',
+        labels: ['dev', 'design'],
+    },
+    {
+        imgFileName: 'ian',
+        labels: ['dev', 'design'],
+    },
+]
+
+function genImgSrc(name: string) {
+    return `${imgBasePath}/${name}.${imgFileType}`
+}
+---
+
+<div
+    class="relative flex flex-col gap-4 *:flex *:flex-row *:flex-nowrap
+  *:gap-4"
+>
+    <div
+        class="bg-[radial-gradient(rgb(17,23,40,90%),rgb(17,23,40,95%)_60%,rgb(17,23,40)_70%)]
+        absolute z-20 w-full h-full backdrop-blur-[4px]"
+    >
+    </div>
+    <div class="absolute-center z-40">
+        <GradientHeading
+            fontSize="2.5rem"
+            gradientClassName="gradient-color--1"
+        >
+            <div class="flex flex-col items-center justify-center">
+                <div>Projects</div>
+                <div class="text-base text-slate-500">
+                    Here's the preview of some projects i can share with you.
+                </div>
+            </div>
+        </GradientHeading>
+    </div>
+    <!-- <CtaShiny class="absolute-center z-40" label="View Projects" /> -->
+    <div>
+        {
+            previewList
+                .slice(0, 5)
+                .map((preview, _i) => (
+                    <PreviewCard
+                        imgSrc={genImgSrc(preview.imgFileName)}
+                        labels={preview.labels}
+                    />
+                ))
+        }
+    </div>
+    <div>
+        {
+            previewList
+                .slice(5, previewList.length)
+                .map((preview, _i) => (
+                    <PreviewCard
+                        imgSrc={genImgSrc(preview.imgFileName)}
+                        labels={preview.labels}
+                    />
+                ))
+        }
+    </div>
+</div>

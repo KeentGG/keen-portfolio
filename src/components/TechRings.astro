@@ -1,0 +1,50 @@
+---
+import AvatarRing from './AvatarRing.astro'
+import TechNode from './TechNode.astro'
+import GradientBadge from './GradientBadge.astro'
+
+const { nodeList, size, gradientPercent, label, isBlur } = Astro.props
+---
+
+<div class="relative z-0">
+    <AvatarRing class="z-0" gradientPercent={gradientPercent} ringSize={size} />
+    <div class="relative z-50">
+        {
+            nodeList.map((node: any, _i: number) => (
+                <TechNode
+                    imgSrc={node.img}
+                    label={node.label}
+                    innerSize={node.size}
+                    accentHex={node.hex}
+                    posDiameter={size * 16}
+                    angle={node.deg}
+                    desaturate={0}
+                    isBlur={isBlur}
+                />
+            ))
+        }
+        <div
+            class="absolute -top-[6px] -left-1/2
+            size-[var(--ringSize)]
+            -translate-x-1/2 -translate-y-1/2"
+        >
+            {
+                !!label && (
+                    <div
+                        class="absolute left-1/2 bottom-0
+                    translate-y-1/2 -translate-x-1/2
+                    "
+                    >
+                        <GradientBadge label={label} />
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</div>
+
+<style
+    define:vars={{
+        ringSize: `${size * 16}px`,
+    }}
+></style>

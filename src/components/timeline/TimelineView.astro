@@ -1,0 +1,316 @@
+---
+import TimelineRow from './TimelineRow.astro'
+import BabyIcon from '../../components/icons/BabyIcon.astro'
+import AcademicIcon from '../../components/icons/AcademicIcon.astro'
+import WorkIcon from '../../components/icons/WorkIcon.astro'
+import GridCard from '../../components/GridCard.astro'
+import SocialButton from '../../components/SocialButton.astro'
+import LinkedInIcon from '../../components/icons/LinkedInIcon.astro'
+import GithubIcon from '../../components/icons/GithubIcon.astro'
+import BentoCard from '../../components/BentoCard.astro'
+---
+
+<div
+    class="z-20 flex flex-row justify-center gap-4 flex-wrap
+  w-full -mt-4 px-4 pb-4 max-w-[72rem]"
+>
+    <div class="w-full lg:max-w-[80vw] flex-[5] min-w-[26rem]">
+        <BentoCard heading="Career" class="h-fit">
+            <div
+                class="text-pretty flex flex-col *:flex
+                                *:flex-row *:gap-2"
+            >
+                <TimelineRow
+                    heading="Stratium Software Group"
+                    subHeading="Intern & Part-time Software Engineer"
+                    date="2018 (9 mos.)"
+                    skills={[
+                        {
+                            name: 'Angular',
+                            color: '#F31B68',
+                        },
+                        {
+                            name: 'Shopify',
+                            color: '#96BF49',
+                        },
+                        {
+                            name: 'iOS application',
+                            color: '#1B9EF8',
+                        },
+                        {
+                            name: 'Git',
+                            color: '#F1573B',
+                        },
+                    ]}
+                >
+                    <div class="my-2 text-cloud-200">
+                        Started as an Intern with a role of developing a food
+                        delivery frontend application using Angular and Shopify. <br
+                        /><br /> After internship i was absorbed into part-time role
+                        where I maintained EloTouch's Objective-C iPad applications.
+                        EloTouch is the inventor of resistive touchscreen displays
+                        over 50 years ago and still is delivering touch solutions
+                        all over the world.
+                        <br />
+                    </div>
+                </TimelineRow>
+                <TimelineRow
+                    heading="Stratium Software Group"
+                    subHeading="Software Engineer"
+                    date="2019 - 2021 (2yrs.)"
+                    skills={[
+                        {
+                            name: 'Flutter',
+                            color: '#5FCAF8',
+                        },
+                        {
+                            name: 'iOS application',
+                            color: '#1B9EF8',
+                        },
+                        {
+                            name: 'VueJS',
+                            color: '#55C895',
+                        },
+                        {
+                            name: 'Firebase',
+                            color: '#F8A71A',
+                        },
+                        {
+                            name: 'Git',
+                            color: '#F1573B',
+                        },
+                    ]}
+                >
+                    <div class="my-2 text-cloud-200">
+                        Came back after University, continued maintainance of
+                        EloTouch's iPad applications, I embarked on a new role
+                        as a Flutter developer for a LMS mobile project that
+                        serves to thousands of students. Since then I have made
+                        several other Flutter and frontend projects.
+                    </div>
+                </TimelineRow>
+                <TimelineRow
+                    heading="Suzerin Inc."
+                    subHeading="Frontend Developer"
+                    date="2021 - 2022 (1yr.)"
+                    skills={[
+                        { name: 'VueJS', color: '#55C895' },
+                        {
+                            name: 'TailwindCSS',
+                            color: '#38BDF8',
+                        },
+                        { name: 'Docker', color: '#58A2F2' },
+                        {
+                            name: 'Git',
+                            color: '#F1573B',
+                        },
+                    ]}
+                >
+                    <div class="my-2 text-cloud-200">
+                        Served as a frontend developer for a new financial
+                        accounting app using VueJS and TailwindCSS. Collaborated
+                        with our backend engineers which uses Laravel. I had
+                        learned and interfaced popular financial solutions such
+                        as Quickbook and Xero.
+                    </div>
+                </TimelineRow>
+                <TimelineRow
+                    heading="Tau Express"
+                    subHeading="Contractual Frontend Developer"
+                    date="2022 - 2024 (2yrs.)"
+                    skills={[
+                        { name: 'ReactJS', color: '#00d8ff' },
+                        { name: 'Python', color: '#FBD84C' },
+                        {
+                            name: 'Neo4J Graph',
+                            color: '#3998FD',
+                        },
+                        {
+                            name: 'TailwindCSS',
+                            color: '#38BDF8',
+                        },
+                        { name: 'Storybook', color: '#F64D89' },
+                        { name: 'Wordpress', color: '#64C3ED' },
+                        {
+                            name: 'Git',
+                            color: '#F1573B',
+                        },
+                    ]}
+                >
+                    <div class="my-2 text-cloud-200">
+                        As a sole developer, I had the responsibilities to
+                        maintain and develop new projects from Python scripts to
+                        ReactJS projects. Had the pleasure to develop an
+                        in-house component design system library using ReactJS
+                        and TailwindCSS. The design system has been used on all
+                        our new projects as well as retrofitting on existing
+                        projects. <br />
+                        <br /> Several ReactJS web apps were built to accommodate
+                        custom AI/ML data from our AI engineers.
+                    </div>
+                </TimelineRow>
+                <TimelineRow
+                    heading="Freelancing Projects"
+                    subHeading="Web/Mobile Developer & UI/UX Designer"
+                    date="2019-'21, 2024 (3 mos.)"
+                    skills={[
+                        { name: 'VueJS', color: '#55C895' },
+                        { name: 'ReactJS', color: '#00d8ff' },
+                        { name: 'Figma', color: '#F67569' },
+                        { name: 'Wordpress', color: '#64C3ED' },
+                        { name: 'PHP', color: '#7B8EDF' },
+                        {
+                            name: 'Squarespace',
+                            color: '#ABABAB',
+                        },
+                        { name: 'Wix', color: '#6272D6' },
+                        {
+                            name: 'Git',
+                            color: '#F1573B',
+                        },
+                        {
+                            name: 'Flutter',
+                            color: '#5FCAF8',
+                        },
+                    ]}
+                >
+                    <div class="my-2 text-cloud-200">
+                        Worked closely with UK real-estate agent clients to
+                        design logos, branding, website UI/UX, and developed
+                        websites based on their needs. <br /><br /> Also built a
+                        prototype mobile app for a client using Flutter and Firebase,
+                        complete with a polished UI all within 1 week timeframe.
+                    </div>
+                </TimelineRow>
+            </div>
+        </BentoCard>
+    </div>
+    <div
+        class="gap-4 flex flex-col flex-[4] min-w-[26rem] md:min-w-[22rem]
+                        lg:max-w-[80vw] w-full h-min"
+    >
+        <BentoCard heading="While AFK i do" class="h-full w-full pb-2">
+            <div class="relative flex flex-col justify-center">
+                <span
+                    class="absolute top-0 left-0 bottom-0 right-0 border
+                                    border-cloud-900"
+                ></span>
+                <div class="flex flex-wrap w-full *:w-max">
+                    <GridCard class="flex-1">
+                        <div>Hiking</div>
+                    </GridCard>
+                    <GridCard class="flex-[2]">
+                        <div>Mobile Games</div>
+                    </GridCard>
+                    <GridCard class="flex-1">
+                        <div>Roadtrip</div>
+                    </GridCard>
+                </div>
+                <div class="flex flex-wrap *:w-max *:flex-1">
+                    <GridCard>
+                        <div>Read tech stuffs</div>
+                    </GridCard>
+                    <GridCard>
+                        <div>Watch space stuffs</div>
+                    </GridCard>
+                </div>
+                <div class="flex flex-wrap *:w-max *:flex-1">
+                    <GridCard>
+                        <div>Walking</div>
+                    </GridCard>
+                    <GridCard>
+                        <div>Explore Cafes</div>
+                    </GridCard>
+                    <GridCard>
+                        <div>Food</div>
+                    </GridCard>
+                </div>
+            </div>
+        </BentoCard>
+        <BentoCard heading="About Me" class="w-full">
+            <div class="text-cloud-300">
+                <div
+                    class="text-pretty max-w-[36em] flex flex-col *:flex *:flex-row *:gap-2"
+                >
+                    <TimelineRow heading="Young age">
+                        <BabyIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Started learning basic and plain websites.
+                        </div>
+                    </TimelineRow>
+                    <TimelineRow heading="Highschool" date="2013">
+                        <AcademicIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Championed a regional Web Page competition where we
+                            designed & developed a city tourism web page within
+                            a day.
+                        </div>
+                    </TimelineRow>
+                    <TimelineRow heading="College">
+                        <AcademicIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Attended several Google Developer Group (GDG)
+                            seminars, Mozilla Wearable seminar, and more related
+                            to tech industry
+                        </div>
+                    </TimelineRow>
+                    <TimelineRow heading="Side Projects">
+                        <WorkIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Designed Web UIs with logo branding and web
+                            development for several UK real-estate agent
+                            clients.
+                        </div>
+                    </TimelineRow>
+                    <TimelineRow heading="Undergraduate" date="2019">
+                        <AcademicIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Graduated with Bachelor of Science in Computer
+                            Engineering in Software and Hardware from University
+                            of St. La Salle.
+                        </div>
+                    </TimelineRow>
+                    <TimelineRow heading="Career">
+                        <WorkIcon slot="icon" class="size-5" />
+                        <div class="my-2 text-cloud-200">
+                            Absorbed by a software company where i previously
+                            interned, since then have worked with 2 more
+                            employers which are all remote-based.
+                        </div>
+                    </TimelineRow>
+                </div>
+            </div>
+        </BentoCard>
+        <BentoCard heading="Let's work together">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-row w-full text-sm gap-4">
+                    <div class="flex flex-col w-full">
+                        <div class="text-cloud-400 font-medium">Phone</div>
+                        <div class="text-cloud-300 text-base font-light">
+                            +63 928 906 5696
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full">
+                        <div class="text-cloud-400 font-medium">
+                            Email Address
+                        </div>
+                        <div class="text-cloud-300 text-base font-light">
+                            keanukent.dev@gmail.com
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2">
+                    <SocialButton label="LinkedIn" color="#2E6CB5">
+                        <LinkedInIcon
+                            slot="icon"
+                            class="size-6 text-[#2E6CB5]"
+                        />
+                    </SocialButton>
+                    <SocialButton label="Github" color="#A54CB1">
+                        <GithubIcon slot="icon" class="size-6 text-[#A54CB1]" />
+                    </SocialButton>
+                </div>
+            </div>
+        </BentoCard>
+    </div>
+</div>

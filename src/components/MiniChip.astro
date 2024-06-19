@@ -1,0 +1,35 @@
+---
+import tinycolor from 'tinycolor2'
+
+const { label, accentColor } = Astro.props
+const color = accentColor ?? '#93A6DF'
+
+const borderColor = tinycolor(color)
+    .darken(25)
+    .desaturate(30)
+    .setAlpha(0.7)
+    .toRgbString()
+const bgColor = tinycolor(color)
+    .setAlpha(0.35)
+    .desaturate(20)
+    .darken(40)
+    .toRgbString()
+const textColor = tinycolor(color).darken(2).desaturate(15).toRgbString()
+---
+
+<div
+    class="flex flex-row justify-center items-center text-[13px] w-auto
+  bg-[var(--bgColor)] text-[var(--textColor)] font-medium
+  rounded-md px-2 py-px pt-[4px] border border-[var(--borderColor)]"
+>
+    {label}
+</div>
+
+<style
+    define:vars={{
+        accentColor,
+        bgColor,
+        textColor,
+        borderColor,
+    }}
+></style>

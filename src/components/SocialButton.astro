@@ -1,0 +1,15 @@
+---
+const { label } = Astro.props
+---
+
+<button
+    class="border border-cloud-700
+  rounded-[8px] px-4 py-2 hover:bg-cloud-700"
+>
+    <div class="flex flex-row w-full
+  justify-between items-center gap-1">
+        <slot name="icon" />
+        <div class="text-cloud-300 text-sm
+        font-regular">{label}</div>
+    </div>
+</button>

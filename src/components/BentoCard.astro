@@ -1,0 +1,17 @@
+---
+import { cn } from '../utils/utils.ts'
+
+const { heading, class: className } = Astro.props
+---
+
+<div
+    class={cn(
+        'dark-smooth-shadow-lg bg-cloud-900 rounded-[12px] p-4 border border-cloud-700/40',
+        className
+    )}
+>
+    <h3 class="text-cloud-300 font-medium text-lg mb-4">{heading}</h3>
+    <div>
+        <slot />
+    </div>
+</div>

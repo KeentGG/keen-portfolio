@@ -1,0 +1,62 @@
+---
+import { cn } from '../utils/utils.ts'
+
+const { label, class: className } = Astro.props
+---
+
+<div class={cn('relative', className)}>
+    <button
+        class="z-20
+        shiny-cta
+        bg-[radial-gradient(at_center_top,rgba(0,0,0,var(--opacity))_var(--size),#0E1320_var(--spread))]
+        text-rose-300 font-medium px-5 py-3
+    rounded-[10px]"
+        >{label}</button
+    >
+    <div
+        class="absolute-center shadow-md z-0
+        bg-[radial-gradient(at_center_top,#DCA08D_-50%,rgba(182,100,76,0.3))]
+        backdrop-blur-sm w-[calc(100%+6px)]
+        h-[calc(100%+6px)] rounded-[12px]"
+    >
+    </div>
+</div>
+
+<style
+    define:vars={{
+        // opacity: '80%',
+        // size: '-25%',
+        // spread: '65%',
+    }}
+>
+    @property --opacity {
+        syntax: '<percentage>';
+        initial-value: 70%;
+        inherits: false;
+    }
+
+    @property --size {
+        syntax: '<percentage>';
+        initial-value: -25%;
+        inherits: false;
+    }
+
+    @property --spread {
+        syntax: '<percentage>';
+        initial-value: 65%;
+        inherits: false;
+    }
+
+    .shiny-cta {
+        transition:
+            --opacity 500ms ease-out,
+            --size 300ms ease-out 50ms,
+            --spread 300ms ease-out 50ms;
+    }
+
+    .shiny-cta:hover {
+        --opacity: 0%;
+        --size: 100%;
+        --spread: 150%;
+    }
+</style>

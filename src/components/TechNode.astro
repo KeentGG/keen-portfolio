@@ -1,0 +1,212 @@
+---
+import tinycolor from 'tinycolor2'
+import { cn } from '../utils/utils.ts'
+import { degToRad, radToPoint } from '../utils/trig.ts'
+import type { Point } from '../types/trig.ts'
+import TechLabel from './TechLabel.astro'
+
+const {
+    innerSize,
+    accentHex,
+    posDiameter,
+    imgSrc,
+    label,
+    angle,
+    desaturate,
+    point,
+    isBlur,
+} = Astro.props
+
+const innerOutlineSize = innerSize + 1 + Math.floor((innerSize / 32) * 1.8)
+const ringCoreSize = innerOutlineSize + 6 + Math.ceil(innerSize / 8) * 2.5
+const ringWidth = 1 + Math.ceil((innerSize / 24) * 1.2)
+const shadowAccentColor = tinycolor(accentHex)
+    .desaturate(desaturate)
+    .setAlpha(0.18)
+    .toRgbString()
+const accentStartColor = tinycolor(accentHex)
+    .desaturate(desaturate)
+    .darken(18)
+    .toRgbString()
+const accentEndColor = tinycolor(accentHex)
+    .desaturate(desaturate)
+    .darken(35)
+    .toRgbString()
+const ringColor = tinycolor(accentHex)
+    .desaturate(desaturate)
+    .darken(26)
+    .toRgbString()
+const labelPoint: Point = getLabelPos(innerSize, angle, true)
+const nodePoint: Point = !!posDiameter ? getLabelPos(posDiameter, angle) : point
+
+let labelTranslateX: any = 0
+let labelTranslateY: any = 0
+
+function getInverseDegree(degree: number): number {
+    if (degree < 180) {
+        return degree + 180
+    } else {
+        return degree - 180
+    }
+}
+
+function getLabelPos(
+    size: number,
+    degree: number,
+    isInverted: boolean = false
+): Point {
+    const radius = size / 2
+    const rad = degToRad(isInverted ? getInverseDegree(degree) : degree)
+
+    return radToPoint(rad, radius)
+}
+
+function scalingAdjustPosition(angle: number) {
+    const extra_yield = 0.9
+    const threshold = 10 // Angle at which the yield normalizes
+    const max_angle = 90 // Maximum angle for a normal ratio
+    const k = -Math.log(1 - extra_yield) / threshold // Rate of decay
+    const exponential_decay =
+        (1 - Math.exp(-k * Math.min(angle, threshold))) * extra_yield /**/
+    const normal_ratio =
+        angle > threshold
+            ? (angle - threshold) / (max_angle - threshold)
+            : 0 /**/
+
+    return Math.min(50, (exponential_decay + normal_ratio) * 50)
+}
+
+if (angle < 90) {
+    const adjustY = 50 - scalingAdjustPosition(angle)
+
+    labelTranslateX = -100 /**/
+    labelTranslateY = 0
+
+    labelTranslateX += 6
+    labelTranslateY -= 15
+
+    labelTranslateY += adjustY /**/
+} else if (angle < 180) {
+    // TODO: Adjust for inverted angle
+    labelTranslateX = -100
+    labelTranslateY = -100 /**/
+
+    labelTranslateX += 5
+    labelTranslateY += 12
+} else if (angle < 270) {
+    // TODO: Adjust for inverted angle
+    const adjustY = 50 - scalingAdjustPosition(angle - 180) /**/
+
+    labelTranslateX = 0
+    labelTranslateY = -50 /**/
+
+    labelTranslateX -= 4
+    labelTranslateY -= 15 /**/
+
+    labelTranslateY += adjustY
+} else if (angle < 360) {
+    labelTranslateX = -100 /**/
+    labelTranslateY = -100
+
+    labelTranslateX += 5
+    labelTranslateY += 20 /**/
+}
+
+labelTranslateX += '%'
+labelTranslateY += '%'
+---
+
+<div class={cn('absolute node', isBlur && 'blur-[24px]')}>
+    <div class="absolute-center">
+        <div class="relative">
+            <div
+                class={cn(
+                    'ring-node absolute-center z-10 rounded-full',
+                    isBlur && 'bg-[var(--accentColor)]',
+                    !isBlur && 'bg-transparent opacity-10'
+                )}
+            >
+            </div>
+            <div class="absolute-center z-10">
+                <div class="absolute label">
+                    <TechLabel
+                        accentColor={accentHex}
+                        label={label}
+                        desaturate={10}
+                    />
+                </div>
+            </div>
+            {
+                !isBlur && (
+                    <div class="node-outline absolute-center rounded-full z-10" />
+                )
+            }
+            <div
+                class={cn(
+                    'relative p-2 flex flex-row justify-center items-center node-inner bg-slate-800 rounded-full z-20 ml-auto mr-auto',
+                    isBlur && 'bg-[var(--accentColor)]'
+                )}
+            >
+                {
+                    !isBlur && (
+                        <img
+                            class="h-[60%] aspect-square"
+                            src={imgSrc}
+                            alt={label}
+                        />
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style
+    define:vars={{
+        nodeLeft: `${nodePoint.x}px`,
+        nodeTop: `${nodePoint.y}px`,
+        accentColor: `${accentHex}`,
+        innerSize: `${innerSize}px`,
+        outlineSize: `${innerOutlineSize}px`,
+        ringCoreSize: `${ringCoreSize}px`,
+        ringWidth: `${ringWidth}px`,
+        ringColor: `${ringColor}`,
+        shadowColor: `${shadowAccentColor}`,
+        outlineGradientColor: `linear-gradient(150deg, ${accentStartColor} 25%, ${accentEndColor} 100%)`,
+        labelX: `${labelPoint.x}px`,
+        labelY: `${labelPoint.y}px`,
+        labelTranslateX,
+        labelTranslateY,
+    }}
+>
+    .node {
+        left: var(--nodeLeft);
+        top: var(--nodeTop);
+    }
+
+    .node-inner {
+        width: var(--innerSize);
+        height: var(--innerSize);
+    }
+
+    .node-outline {
+        width: var(--outlineSize);
+        height: var(--outlineSize);
+        background: var(--outlineGradientColor);
+        opacity: 65%;
+        filter: drop-shadow(2px 4px 10px var(--shadowColor));
+    }
+
+    .ring-node {
+        width: var(--ringCoreSize);
+        height: var(--ringCoreSize);
+        border-width: var(--ringWidth);
+        border-color: var(--ringColor);
+    }
+
+    .label {
+        left: var(--labelX);
+        top: var(--labelY);
+        transform: translate(var(--labelTranslateX), var(--labelTranslateY));
+    }
+</style>

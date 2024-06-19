@@ -1,0 +1,28 @@
+---
+import { cn } from '../utils/utils.ts'
+
+const { imgSrc, labels = [], class: className } = Astro.props
+---
+
+<div
+    class={cn(
+        'relative rounded-[14px] overflow-hidden border-[4px] border-cloud-600 min-w-[12rem]',
+        className
+    )}
+>
+    <img src={imgSrc} />
+    <div class="absolute bottom-0 left-0">
+        <ul class="flex flex-row gap-1 p-1">
+            {
+                labels.map((label: string, _i: number) => (
+                    <li
+                        class="text-[14px] font-medium py-1 px-3 rounded-lg bg-cloud-800/80
+                    backdrop-blur text-cloud-300"
+                    >
+                        {label}
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>

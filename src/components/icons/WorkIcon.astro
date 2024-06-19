@@ -1,0 +1,18 @@
+---
+import { cn } from '../../utils/utils.ts'
+const { class: className } = Astro.props
+---
+
+<svg
+    class={cn('stroke-current size-full', className)}
+    fill="none"
+    viewBox="0 0 24
+    24"
+>
+    <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1"
+        d="M13.75 5.5s0-2.75-2.75-2.75S8.25 5.5 8.25 5.5M5.5 17.875V5.5m11 12.375V5.5m4.125 0H1.375v12.375h19.25V5.5Z"
+    ></path>
+</svg>
