@@ -6,6 +6,5 @@
       "use": "@vercel/node"
     }
   ],
-  "buildCommand": "npm install && npm run build",
-  "installCommand": "npm install"
+  "buildCommand": "npm install && npm run build"
 }
