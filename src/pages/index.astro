@@ -138,10 +138,24 @@ const ringSizeOne = 48; // Unit rem
                         *:justify-start"
                     >
                         <div class="items-center text-center">
-                            <img
-                                src="/images/ken.jpg"
-                                class="rounded-full max-w-[7rem] aspect-square"
-                            />
+                            <div class="relative">
+                                <img
+                                    src="/images/ken.jpg"
+                                    class="rounded-full max-w-[7rem]
+                                    aspect-square z-50 relative"
+                                />
+                                <div
+                                    class="absolute z-10
+                                    top-[4px] right-[-1.5rem]
+                                    translate-x-1/2 w-min"
+                                >
+                                    <TechLabel
+                                        accentColor="#54A6E1"
+                                        label="Hire me!"
+                                    />
+                                </div>
+                            </div>
+
                             <h1
                                 class="leading-[1.4em] text-[2rem] font-light
                         text-slate-300 flex justify-center items-center"

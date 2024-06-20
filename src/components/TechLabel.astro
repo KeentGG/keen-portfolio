@@ -1,24 +1,25 @@
 ---
-import tinycolor from 'tinycolor2'
+import tinycolor from "tinycolor2";
 
-const { accentColor, label, desaturate } = Astro.props
+const { accentColor, label, desaturate } = Astro.props;
 const labelBgColor = tinycolor(accentColor)
     .desaturate(desaturate)
     .setAlpha(0.05)
-    .toRgbString()
+    .toRgbString();
 const labelStrokeColor = tinycolor(accentColor)
     .desaturate(desaturate)
     .setAlpha(0.25)
-    .toRgbString()
+    .toRgbString();
 const labelTextColor = tinycolor(accentColor)
     .desaturate(desaturate - 6)
-    .toHexString()
+    .toHexString();
 ---
 
 <div
     class="text-sm font-medium z-10 text-[var(--labelTextColor)] py-1
   px-3 border-[1px] rounded-full backdrop-blur-[4px]
-  bg-[var(--labelBgColor)] border-[var(--labelStrokeColor)]"
+  bg-[var(--labelBgColor)] border-[var(--labelStrokeColor)]
+    whitespace-nowrap"
 >
     {label}
 </div>
