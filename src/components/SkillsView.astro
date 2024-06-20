@@ -1,62 +1,61 @@
 ---
-import BentoCard from './BentoCard.astro'
-import Chip from './Chip.astro'
+import BentoCard from "./BentoCard.astro";
+import Chip from "./Chip.astro";
 
 const frontendSkills = [
-    'ReactJS',
-    'NodeJS',
-    'TailwindCSS',
-    'VueJS',
-    'Flutter',
-    'Astro',
-    'SCSS',
-    'HTML5',
-    'JavaScript',
-    'Wordpress',
-    'NextJS',
-    'Svelte',
-    'NuxtJS',
-    'Angular',
-]
+    "ReactJS",
+    "NodeJS",
+    "TailwindCSS",
+    "VueJS",
+    "Flutter",
+    "Astro",
+    "SCSS",
+    "HTML5",
+    "JavaScript",
+    "Wordpress",
+    "NextJS",
+    "Svelte",
+    "NuxtJS",
+    "Angular",
+];
 
 const backendSkills = [
-    'Google Cloud',
-    'Railway',
-    'MongoDB',
-    'Postgres/SQL',
-    'Prisma',
-    'Hasura',
-    'Firebase',
-    'NestJS',
-    'ExpressJS',
-    'JWT Auth',
-    'Vercel',
-]
+    "Google Cloud",
+    "Railway",
+    "MongoDB",
+    "Postgres/SQL",
+    "Prisma",
+    "Hasura",
+    "Firebase",
+    "NestJS",
+    "ExpressJS",
+    "JWT Auth",
+    "Vercel",
+];
 
 const tools = [
-    'Notion',
-    'Postman',
-    'NeoVim',
-    'OpenAI',
-    'Docker',
-    'Figma',
-    'Basic ML',
-    'Unit Testing',
-    'Python',
-    'NodeJS',
-    'PHP',
-    'Web Scraping',
-    'Git',
-    'Github',
-    'Gitlab',
-]
+    "Notion",
+    "Postman",
+    "NeoVim",
+    "OpenAI",
+    "Docker",
+    "Figma",
+    "Basic ML",
+    "Unit Testing",
+    "Python",
+    "NodeJS",
+    "PHP",
+    "Web Scraping",
+    "Git",
+    "Github",
+    "Gitlab",
+];
 ---
 
 <div
-    class="z-20 mt-4 flex flex-row justify-center gap-4 flex-wrap -mb-4 px-4 *:min-w-[20rem]
-                    *:flex-[3] perspective"
+    class="z-20 mt-4 flex flex-row justify-center items-start gap-4 flex-wrap -mb-4 px-4 *:min-w-[20rem] *:flex-[3] perspective"
 >
-    <div class="z-10 lg:rotate-left h-auto lg:h-full">
+    <div class="z-10 lg:rotate-left h-full lg:h-full">
         <BentoCard heading="Backend" class="h-full">
             <div class="flex flex-row flex-wrap gap-2">
                 {backendSkills.map((skill, _i) => <Chip label={skill} />)}
