@@ -1,6 +1,7 @@
 ---
 import { cn } from "../utils/utils";
 import CtaShiny from "./CtaShiny.astro";
+import ClipboardIcon from "./icons/ClipboardIcon.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedInIcon from "./icons/LinkedInIcon.astro";
 
@@ -19,7 +20,7 @@ const { class: className } = Astro.props;
         class="absolute blur-[48px] inset-[-400%]
       animate-[spin_3s_linear_infinite]
       bg-[conic-gradient(from_90deg_at_50%_50%,#B4F1F1_0%,#47399E_50%,#B4F1F1_100%)]
-      opacity-40"
+      opacity-65"
       ></span>
     </div>
 
@@ -28,22 +29,25 @@ const { class: className } = Astro.props;
       justify-center gap-[2px] rounded-xl text-md font-medium text-cloud-300 z-10"
     >
       <button
-        class="bg-cloud-900 size-full py-2 px-4 rounded-[11px] rounded-tr-[4px] rounded-br-[4px]"
+        class="bg-cloud-900 size-full py-2 px-4 rounded-[11px]
+        rounded-tr-[5px] rounded-br-[5px] flex gap-2
+        items-center justify-center"
       >
         <div>keanukent.dev@gmail.com</div>
+        <ClipboardIcon class="size-4 text-cloud-400" />
       </button>
       <button
-        class="rounded-[4px] bg-cloud-900
+        class="rounded-[5px] bg-cloud-900
         size-full py-2 px-4 flex justify-center"
       >
-        <LinkedInIcon slot="icon" class="size-6 text-[#2E6CB5]" />
+        <LinkedInIcon class="size-6 text-[#2E6CB5]" />
       </button>
 
       <button
-        class="rounded-tl-[4px] rounded-bl-[4px] bg-cloud-900
+        class="rounded-tl-[5px] rounded-bl-[5px] bg-cloud-900
         size-full py-2 px-4 rounded-[11px] flex justify-center"
       >
-        <GithubIcon slot="icon" class="size-6 text-[#A54CB1]" />
+        <GithubIcon class="size-6 text-[#A54CB1]" />
       </button>
     </div>
   </div>
