@@ -1,0 +1,50 @@
+---
+import { cn } from "../utils/utils";
+import CtaShiny from "./CtaShiny.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+
+const { class: className } = Astro.props;
+---
+
+<div class={cn("px-2", className)}>
+  <div
+    class="w-full relative inline-flex h-auto overflow-hidden
+    rounded-xl p-[2px] focus:outline-none focus:ring-2
+    focus:ring-slate-400 focus:ring-offset-2
+    focus:ring-offset-slate-50 shadow-lg"
+  >
+    <div class="size-auto">
+      <span
+        class="absolute blur-[48px] inset-[-400%]
+      animate-[spin_3s_linear_infinite]
+      bg-[conic-gradient(from_90deg_at_50%_50%,#B4F1F1_0%,#47399E_50%,#B4F1F1_100%)]
+      opacity-40"
+      ></span>
+    </div>
+
+    <div
+      class="w-full flex flex-row h-full items-start
+      justify-center gap-[2px] rounded-xl text-md font-medium text-cloud-300 z-10"
+    >
+      <button
+        class="bg-cloud-900 size-full py-2 px-4 rounded-[11px] rounded-tr-[4px] rounded-br-[4px]"
+      >
+        <div>keanukent.dev@gmail.com</div>
+      </button>
+      <button
+        class="rounded-[4px] bg-cloud-900
+        size-full py-2 px-4 flex justify-center"
+      >
+        <LinkedInIcon slot="icon" class="size-6 text-[#2E6CB5]" />
+      </button>
+
+      <button
+        class="rounded-tl-[4px] rounded-bl-[4px] bg-cloud-900
+        size-full py-2 px-4 rounded-[11px] flex justify-center"
+      >
+        <GithubIcon slot="icon" class="size-6 text-[#A54CB1]" />
+      </button>
+    </div>
+  </div>
+</div>

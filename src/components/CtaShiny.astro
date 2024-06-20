@@ -1,12 +1,12 @@
 ---
-import { cn } from '../utils/utils.ts'
+import { cn } from "../utils/utils.ts";
 
-const { label, class: className } = Astro.props
+const { label, class: className } = Astro.props;
 ---
 
-<div class={cn('relative', className)}>
+<div class={cn("relative", className)}>
     <button
-        class="z-20
+        class="z-50
         shiny-cta
         bg-[radial-gradient(at_center_top,rgba(0,0,0,var(--opacity))_var(--size),#0E1320_var(--spread))]
         text-rose-300 font-medium px-5 py-3
@@ -30,19 +30,19 @@ const { label, class: className } = Astro.props
     }}
 >
     @property --opacity {
-        syntax: '<percentage>';
+        syntax: "<percentage>";
         initial-value: 70%;
         inherits: false;
     }
 
     @property --size {
-        syntax: '<percentage>';
+        syntax: "<percentage>";
         initial-value: -25%;
         inherits: false;
     }
 
     @property --spread {
-        syntax: '<percentage>';
+        syntax: "<percentage>";
         initial-value: 65%;
         inherits: false;
     }

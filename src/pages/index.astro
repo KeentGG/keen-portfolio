@@ -1,22 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import PatternBG from '../components/PatternBG.astro'
-import TechRings from '../components/TechRings.astro'
-import GradientHeading from '../components/GradientHeading.astro'
-import ProjectsCarousel from '../components/ProjectsCarousel.astro'
-import ProjectCard from '../components/ProjectCard.astro'
-import TimelineView from '../components/timeline/TimelineView.astro'
-import SkillsView from '../components/SkillsView.astro'
-import ProjectLogoCard from '../components/ProjectLogoCard.astro'
-import ProjectMobileCard from '../components/ProjectMobileCard.astro'
+import Layout from "../layouts/Layout.astro";
+import PatternBG from "../components/PatternBG.astro";
+import TechRings from "../components/TechRings.astro";
+import GradientHeading from "../components/GradientHeading.astro";
+import ProjectsCarousel from "../components/ProjectsCarousel.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import TimelineView from "../components/timeline/TimelineView.astro";
+import SkillsView from "../components/SkillsView.astro";
+import ProjectLogoCard from "../components/ProjectLogoCard.astro";
+import ProjectMobileCard from "../components/ProjectMobileCard.astro";
+import ContactCTA from "../components/ContactCTA.astro";
 
 let techListOne = [
     {
         size: 50,
-        hex: '#FF5D01',
+        hex: "#FF5D01",
         deg: 225,
-        img: '/images/astro-icon.svg',
-        label: 'Astro',
+        img: "/images/astro-icon.svg",
+        label: "Astro",
         point: {
             x: 0,
             y: 0,
@@ -24,10 +25,10 @@ let techListOne = [
     },
     {
         size: 58,
-        hex: '#00B5F8',
+        hex: "#00B5F8",
         deg: 340,
-        img: '/images/flutter-icon.svg',
-        label: 'Flutter',
+        img: "/images/flutter-icon.svg",
+        label: "Flutter",
         point: {
             x: 120,
             y: -60 /**/,
@@ -35,10 +36,10 @@ let techListOne = [
     },
     {
         size: 50,
-        hex: '#81CD39',
+        hex: "#81CD39",
         deg: 200,
-        img: '/images/node-icon.svg',
-        label: 'NodeJS',
+        img: "/images/node-icon.svg",
+        label: "NodeJS",
         point: {
             x: 40,
             y: 100,
@@ -46,10 +47,10 @@ let techListOne = [
     },
     {
         size: 68,
-        hex: '#00D8FF',
+        hex: "#00D8FF",
         deg: 248,
-        img: '/images/react-icon.svg',
-        label: 'ReactJS',
+        img: "/images/react-icon.svg",
+        label: "ReactJS",
         point: {
             x: 160,
             y: 70,
@@ -57,10 +58,10 @@ let techListOne = [
     },
     {
         size: 60,
-        hex: '#55C895',
+        hex: "#55C895",
         deg: 320,
-        img: '/images/vue-icon.svg',
-        label: 'VueJS',
+        img: "/images/vue-icon.svg",
+        label: "VueJS",
         point: {
             x: -60,
             y: 160 /**/,
@@ -68,21 +69,24 @@ let techListOne = [
     },
     {
         size: 69,
-        hex: '#38BDF8',
+        hex: "#38BDF8",
         deg: 295,
-        img: '/images/tailwindcss-icon.svg',
-        label: 'TailwindCSS',
+        img: "/images/tailwindcss-icon.svg",
+        label: "TailwindCSS",
         point: {
             x: 80,
             y: 220,
         },
     },
-]
+];
 
-const ringSizeOne = 48 // Unit rem
+const ringSizeOne = 48; // Unit rem
 ---
 
 <Layout title="Keanu Kent B. Gargar">
+    <ContactCTA
+        class="max-w-[26rem] w-full fixed bottom-0 z-[100] left-1/2 -translate-x-1/2 mb-2 md:mb-4"
+    />
     <main
         class="relative flex flex-col h-full w-full items-center overflow-x-hidden"
     >
@@ -216,7 +220,7 @@ const ringSizeOne = 48 // Unit rem
                             startColor="#250C6F"
                             accentColor="#6EB6D7"
                             title="WMP Property Solutions"
-                            skills={['Design', 'Web Development']}
+                            skills={["Design", "Web Development"]}
                             photoName="ian"
                             class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
                         />
@@ -225,7 +229,7 @@ const ringSizeOne = 48 // Unit rem
                             endColor="#00365F"
                             accentColor="#6293BB"
                             title="Property Management Virtual Assistant"
-                            skills={['Design', 'VueJS']}
+                            skills={["Design", "VueJS"]}
                             photoName="pmva"
                             class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
                         />
@@ -266,7 +270,7 @@ const ringSizeOne = 48 // Unit rem
                             endColor="#00464B"
                             accentColor="#3DBEA7"
                             title="Regis Green Property"
-                            skills={['Design', 'Web Development']}
+                            skills={["Design", "Web Development"]}
                             photoName="regis"
                             class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
                         />
@@ -275,7 +279,7 @@ const ringSizeOne = 48 // Unit rem
                             endColor="#3D3717"
                             accentColor="#F5D99C"
                             title="Ianelli Estates"
-                            skills={['Design', 'Web Development']}
+                            skills={["Design", "Web Development"]}
                             photoName="ian"
                             class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
                         />
@@ -321,7 +325,7 @@ const ringSizeOne = 48 // Unit rem
                             endColor="#613A26"
                             accentColor="#F99E70"
                             title="Attain Property Solutions Limited"
-                            skills={['Design', 'Web Development']}
+                            skills={["Design", "Web Development"]}
                             photoName="aps"
                             class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem] h-auto lg:h-full max-sm:max-h-[24rem]"
                         />
