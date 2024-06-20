@@ -10,6 +10,7 @@ import SkillsView from "../components/SkillsView.astro";
 import ProjectLogoCard from "../components/ProjectLogoCard.astro";
 import ProjectMobileCard from "../components/ProjectMobileCard.astro";
 import ContactCTA from "../components/ContactCTA.astro";
+import TechLabel from "../components/TechLabel.astro";
 
 let techListOne = [
     {
@@ -289,7 +290,7 @@ const ringSizeOne = 48; // Unit rem
                     >
                         <div
                             class="flex flex-col items-center justify-center max-w-[calc(50%-0.5rem)]
-                        min-w-[28rem] w-full aspect-[1.1]"
+                        min-w-[28rem] w-full aspect-[1] md:aspect-[1.2]"
                         >
                             <div
                                 class="flex flex-row items-center justify-center h-fit w-fi"
@@ -317,6 +318,12 @@ const ringSizeOne = 48; // Unit rem
                                     accentColor="#DCE5F9"
                                     title="BEGREAT Property LTD"
                                     photoName="bgp"
+                                />
+                            </div>
+                            <div class="my-2">
+                                <TechLabel
+                                    accentColor="#A7B8E8"
+                                    label="Logo Designs"
                                 />
                             </div>
                         </div>
