@@ -33,6 +33,7 @@ const { class: className } = Astro.props;
         animate-shimmer items-center justify-center rounded-[11px]
         rounded-tr-[5px] rounded-br-[5px] gap-2 group"
         id="emailBtn"
+        data-clipboard-text="keanukent.dev@gmail.com"
       >
         <div>keanukent.dev@gmail.com</div>
         <ClipboardIcon class="size-4 text-cloud-400" />
@@ -43,6 +44,7 @@ const { class: className } = Astro.props;
           justify-center text-sm font-medium
           bg-[linear-gradient(110deg,#151C30,45%,rgba(40,54,94,0.5),55%,#151C30)]
           bg-[length:200%_100%] transition ease-in duration-350"
+          id="copyStatus"
         >
           <div id="copyEmail">Copy email address</div>
           <div id="copiedEmail" class="hidden">
@@ -53,40 +55,65 @@ const { class: className } = Astro.props;
           </div>
         </div>
       </button>
-      <button
+      <a
         class="rounded-[5px] bg-cloud-900
         size-full py-2.5 px-4 flex justify-center
         hover:bg-[#0E243E] transition-colors"
+        href="https://www.linkedin.com/in/keanukentgargar/"
+        target="_blank"
       >
         <LinkedInIcon class="size-6 text-[#2E6CB5]" />
-      </button>
+      </a>
 
-      <button
+      <a
         class="rounded-tl-[5px] rounded-bl-[5px] bg-cloud-900
         size-full py-2.5 px-4 rounded-[11px] flex justify-center
         hover:bg-[#241327] transition-colors"
+        href="https://github.com/KeentGG"
+        target="_blank"
       >
         <GithubIcon class="size-6 text-[#A54CB1]" />
-      </button>
+      </a>
     </div>
   </div>
 </div>
 
 <script>
-  const copiedTimeShow = 1500;
+  import copy from "clipboard-copy";
+  const copiedTimeShow = 2000;
 
-  document.getElementById("emailBtn").addEventListener("click", function () {
+  async function onCopyClick(isTouch = false) {
     const copiedElement = document.getElementById("copiedEmail");
     const copyElement = document.getElementById("copyEmail");
-    copiedElement.classList.toggle("hidden");
-    copyElement.classList.toggle("hidden");
+    const statusElement = document.getElementById("copyStatus");
 
-    console.log("hiding");
+    statusElement.classList.remove("hidden");
 
-    setTimeout(() => {
+    if (isTouch) {
+      copyElement.classList.remove("hidden");
+      copiedElement.classList.add("hidden");
+    } else {
       copiedElement.classList.toggle("hidden");
       copyElement.classList.toggle("hidden");
-      console.log("shown");
+    }
+
+    copy("keanukent.dev@gmail.com");
+
+    setTimeout(() => {
+      if (isTouch) {
+        statusElement.classList.add("hidden");
+      } else {
+        copiedElement.classList.toggle("hidden");
+        copyElement.classList.toggle("hidden");
+      }
     }, copiedTimeShow);
-  });
+  }
+
+  document
+    .getElementById("emailBtn")
+    .addEventListener("click", () => onCopyClick(false));
+
+  document
+    .getElementById("emailBtn")
+    .addEventListener("touchstart", () => onCopyClick(true));
 </script>
