@@ -17,35 +17,47 @@ const { class: className } = Astro.props;
   >
     <div class="size-auto">
       <span
-        class="absolute blur-[48px] inset-[-400%]
+        class="absolute blur-[36px] inset-[-400%]
       animate-[spin_3s_linear_infinite]
-      bg-[conic-gradient(from_90deg_at_50%_50%,#B4F1F1_0%,#47399E_50%,#B4F1F1_100%)]
+      bg-[conic-gradient(from_90deg_at_50%_50%,#93F2F2_0%,#216EB5_50%,#93F2F2_100%)]
       opacity-65"
       ></span>
     </div>
 
     <div
       class="w-full flex flex-row h-full items-start
-      justify-center gap-[2px] rounded-xl text-md font-medium text-cloud-300 z-10"
+      justify-center gap-[2px] rounded-xl text-md font-regular text-cloud-300 z-10"
     >
       <button
-        class="bg-cloud-900 size-full py-2.5 px-4 rounded-[11px]
-        rounded-tr-[5px] rounded-br-[5px] flex gap-2
-        items-center justify-center"
+        class="relative bg-cloud-900 flex size-full py-2.5 px-4
+        animate-shimmer items-center justify-center rounded-[11px]
+        rounded-tr-[5px] rounded-br-[5px] gap-2 group"
       >
         <div>keanukent.dev@gmail.com</div>
         <ClipboardIcon class="size-4 text-cloud-400" />
+        <div
+          class="group-hover:opacity-100 opacity-0 flex absolute size-full top-0 left-0 rounded-[11px]
+        rounded-tr-[5px] rounded-br-[5px] animate-shimmer
+          text-cloud-400 backdrop-blur-[1.5px] items-center
+          justify-center text-sm font-medium
+          bg-[linear-gradient(110deg,#151C30,45%,rgba(40,54,94,0.5),55%,#151C30)]
+          bg-[length:200%_100%] transition ease-in duration-350"
+        >
+          Copy email address
+        </div>
       </button>
       <button
         class="rounded-[5px] bg-cloud-900
-        size-full py-2.5 px-4 flex justify-center"
+        size-full py-2.5 px-4 flex justify-center
+        hover:bg-[#0E243E] transition-colors"
       >
         <LinkedInIcon class="size-6 text-[#2E6CB5]" />
       </button>
 
       <button
         class="rounded-tl-[5px] rounded-bl-[5px] bg-cloud-900
-        size-full py-2.5 px-4 rounded-[11px] flex justify-center"
+        size-full py-2.5 px-4 rounded-[11px] flex justify-center
+        hover:bg-[#241327] transition-colors"
       >
         <GithubIcon class="size-6 text-[#A54CB1]" />
       </button>

@@ -43,8 +43,17 @@ export default {
       animation: {
         spotlight: "spotlight 2s ease 2s 1 forwards",
         shinyCta: "shinyCta ease 2s 1 forwards",
+        shimmer: "shimmer 2s linear infinite",
       },
       keyframes: {
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
         spotlight: {
           "0%": {
             opacity: 0,
@@ -88,10 +97,12 @@ function cardRotatePlugin({ addUtilities }) {
   addUtilities(
     {
       ".rotate-left": {
-        transform: "translateX(20px) translateZ(-100px) rotateY(-10deg) scale(0.97)",
+        transform:
+          "translateX(20px) translateZ(-100px) rotateY(-10deg) scale(0.97)",
       },
       ".rotate-right": {
-        transform: "translateX(-20px) translateZ(-100px) rotateY(10deg) scale(0.97)",
+        transform:
+          "translateX(-20px) translateZ(-100px) rotateY(10deg) scale(0.97)",
       },
     },
     { variants: ["responsive"] },
