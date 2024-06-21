@@ -1,9 +1,9 @@
 ---
 import { cn } from "../utils/utils";
-import CtaShiny from "./CtaShiny.astro";
 import ClipboardIcon from "./icons/ClipboardIcon.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedInIcon from "./icons/LinkedInIcon.astro";
+import CheckmarkIcon from "./icons/CheckmarkIcon.astro";
 
 const { class: className } = Astro.props;
 ---
@@ -32,6 +32,7 @@ const { class: className } = Astro.props;
         class="relative bg-cloud-900 flex size-full py-2.5 px-4
         animate-shimmer items-center justify-center rounded-[11px]
         rounded-tr-[5px] rounded-br-[5px] gap-2 group"
+        id="emailBtn"
       >
         <div>keanukent.dev@gmail.com</div>
         <ClipboardIcon class="size-4 text-cloud-400" />
@@ -43,7 +44,13 @@ const { class: className } = Astro.props;
           bg-[linear-gradient(110deg,#151C30,45%,rgba(40,54,94,0.5),55%,#151C30)]
           bg-[length:200%_100%] transition ease-in duration-350"
         >
-          Copy email address
+          <div id="copyEmail">Copy email address</div>
+          <div id="copiedEmail" class="hidden">
+            <div class="flex items-center justify-center gap-1 text-teal-500">
+              <span> Copied</span>
+              <CheckmarkIcon class="size-5" />
+            </div>
+          </div>
         </div>
       </button>
       <button
@@ -64,3 +71,22 @@ const { class: className } = Astro.props;
     </div>
   </div>
 </div>
+
+<script>
+  const copiedTimeShow = 1500;
+
+  document.getElementById("emailBtn").addEventListener("click", function () {
+    const copiedElement = document.getElementById("copiedEmail");
+    const copyElement = document.getElementById("copyEmail");
+    copiedElement.classList.toggle("hidden");
+    copyElement.classList.toggle("hidden");
+
+    console.log("hiding");
+
+    setTimeout(() => {
+      copiedElement.classList.toggle("hidden");
+      copyElement.classList.toggle("hidden");
+      console.log("shown");
+    }, copiedTimeShow);
+  });
+</script>
