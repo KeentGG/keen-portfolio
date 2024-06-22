@@ -1,8 +1,8 @@
 ---
-import TechLabel from './TechLabel.astro'
+import TechLabel from "./TechLabel.astro";
 
 const { startColor, endColor, titleColor, textColor, photoName, title, text } =
-    Astro.props
+    Astro.props;
 ---
 
 <div
@@ -31,7 +31,7 @@ const { startColor, endColor, titleColor, textColor, photoName, title, text } =
                     src={`/images/portfolio/${photoName}-3.png`}
                 />
             </div>
-            <div class="mt-8 mr-4 max-w-[40%] flex flex-col items-end gap-2">
+            <div class="mt-6 mr-4 max-w-[40%] flex flex-col items-end gap-2">
                 <div
                     class="text-[var(--mobileTextColor)] text-md text-right opacity-80"
                 >
