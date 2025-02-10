@@ -1,3 +1,9 @@
 {
-  "buildCommand": "rm -rf node_modules package-lock.json && npm install && npm run build"
+  "buildCommand": "rm -rf node_modules package-lock.json && npm install && npm run build",
+  "rewrites": [
+    {
+      "source": "/bingo-keen/:match*",
+      "destination": "https://bingo-keen.vercel.app/:match*"
+    }
+  ]
 }
