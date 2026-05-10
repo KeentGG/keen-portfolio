@@ -4,51 +4,49 @@ import Chip from "./Chip.astro";
 
 const frontendSkills = [
     "ReactJS",
-    "NodeJS",
-    "TailwindCSS",
-    "VueJS",
-    "Flutter",
-    "Astro",
-    "SCSS",
-    "HTML5",
-    "JavaScript",
-    "Wordpress",
+    "TypeScript",
     "NextJS",
-    "Svelte",
-    "NuxtJS",
+    "VueJS",
     "Angular",
+    "TailwindCSS",
+    "Flutter",
+    "HTML5/CSS",
+    "JavaScript",
+    "WordPress",
+    "Shopify Liquid",
+    "Design Systems",
+    "Component Libraries",
+    "Responsive Design",
 ];
 
 const backendSkills = [
-    "Google Cloud",
-    "Railway",
-    "MongoDB",
-    "Postgres/SQL",
-    "Prisma",
-    "Hasura",
-    "Firebase",
-    "NestJS",
+    "Node.js",
     "ExpressJS",
-    "JWT Auth",
-    "Vercel",
+    "NestJS",
+    "AdonisJS",
+    "Laravel",
+    "REST API",
+    "GraphQL",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Firebase",
+    "Vector DBs (Qdrant)",
 ];
 
-const tools = [
-    "Notion",
-    "Postman",
-    "NeoVim",
+const aiAndTools = [
     "OpenAI",
+    "RAG Pipelines",
+    "AI Chatbots",
+    "AI Agentic Coding",
+    "Spec-Driven Dev",
+    "Vercel AI SDK",
+    "Python",
     "Docker",
     "Figma",
-    "Basic ML",
-    "Unit Testing",
-    "Python",
-    "NodeJS",
-    "PHP",
-    "Web Scraping",
+    "UI/UX Design",
     "Git",
-    "Github",
-    "Gitlab",
+    "Vercel",
 ];
 ---
 
@@ -70,9 +68,9 @@ const tools = [
         </BentoCard>
     </div>
     <div class="z-10 lg:rotate-right">
-        <BentoCard heading="Tools & Misc." class="h-full">
+        <BentoCard heading="AI & Tools" class="h-full">
             <div class="flex flex-row flex-wrap gap-2">
-                {tools.map((skill, _i) => <Chip label={skill} />)}
+                {aiAndTools.map((skill, _i) => <Chip label={skill} />)}
             </div>
         </BentoCard>
     </div>

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Avenir", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-display: "Caveat", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --color-cloud-950: #111728;
+  --color-cloud-900: #151C30;
+  --color-cloud-800: #1A233D;
+  --color-cloud-700: #28365E;
+  --color-cloud-600: #314273;
+  --color-cloud-500: #495F9E;
+  --color-cloud-450: #6A81C3;
+  --color-cloud-400: #8A9FDB;
+  --color-cloud-300: #A7B8E8;
+  --color-cloud-200: #C4D0F2;
+  --color-cloud-100: #E1E7FA;
+  --color-cloud-50: #EDF1FA;
+
+  --color-rose-800: #7e4736;
+  --color-rose-600: #b6644c;
+  --color-rose-500: #cb7f68;
+  --color-rose-400: #dc9f8d;
+  --color-rose-300: #e9c1b5;
+
+  --animate-spotlight: spotlight 2s ease 2s 1 forwards;
+  --animate-shinyCta: shinyCta ease 2s 1 forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+@keyframes shinyCta {
+  0% {
+    background-image: radial-gradient(at center top, rgba(0, 0, 0, 80%) -25%, #0E1320 65%);
+  }
+  50% {
+    background-image: radial-gradient(at center top, rgba(0, 0, 0, 20%) 50%, #0E1320 90%);
+  }
+  100% {
+    background-image: radial-gradient(at center top, rgba(0, 0, 0, 0%) 100%, #0E1320 120%);
+  }
+}
+
+@utility rotate-left {
+  transform: translateX(20px) translateZ(-100px) rotateY(-10deg) scale(0.97);
+}
+
+@utility rotate-right {
+  transform: translateX(-20px) translateZ(-100px) rotateY(10deg) scale(0.97);
+}
+
+@utility dark-smooth-shadow-lg {
+  box-shadow: 1.4px 1.7px 23.2px -6px rgba(17, 23, 40, 0.408), 3.8px 4.8px 38.2px -6px rgba(17, 23, 40, 0.483), 9px 11.5px 51.6px -6px rgba(17, 23, 40, 0.561), 30px 38px 77px -6px rgba(17, 23, 40, 0.68);
+}
+
+
