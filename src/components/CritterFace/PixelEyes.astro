@@ -1,0 +1,47 @@
+---
+import { GRID_COLS, GRID_ROWS, PIXEL_SIZE, PIXEL_STEP, SCREEN_ORIGIN } from "./types";
+
+interface Props {
+  eyeGlowId: string;
+  screenId: string;
+}
+
+const { eyeGlowId, screenId } = Astro.props;
+
+const rows = Array.from({ length: GRID_ROWS }, (_, row) => row);
+const cols = Array.from({ length: GRID_COLS }, (_, col) => col);
+---
+
+<g
+  class="critter-eyes"
+  data-critter-eyes
+  filter={`url(#${eyeGlowId})`}
+>
+  <clipPath id={`${screenId}-clip`}>
+    <use href={`#${screenId}`} />
+  </clipPath>
+  <g clip-path={`url(#${screenId}-clip)`}>
+    {rows.map((row) =>
+      cols.map((col) => (
+        <rect
+          class="critter-eye-pixel"
+          data-row={row}
+          data-col={col}
+          x={Number((SCREEN_ORIGIN.x + col * PIXEL_STEP).toFixed(1))}
+          y={Number((SCREEN_ORIGIN.y + row * PIXEL_STEP).toFixed(1))}
+          width={PIXEL_SIZE}
+          height={PIXEL_SIZE}
+          opacity={0}
+        />
+      ))
+    )}
+  </g>
+</g>
+
+<style>
+  .critter-eye-pixel {
+    fill: var(--critter-eye-color);
+    transition: opacity 120ms ease-out;
+    will-change: opacity;
+  }
+</style>

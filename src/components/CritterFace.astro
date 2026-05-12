@@ -1,0 +1,199 @@
+---
+import { cn } from "../utils/utils";
+import PixelEyes from "./CritterFace/PixelEyes.astro";
+
+interface Props {
+  class?: string;
+  animate?: boolean;
+}
+
+const { animate = true, class: className } = Astro.props;
+const idPrefix = `critter-${crypto.randomUUID()}`;
+const headGradId = `${idPrefix}-head-grad`;
+const screenGradId = `${idPrefix}-screen-grad`;
+const eyeGradId = `${idPrefix}-eye-grad`;
+const eyeGlowId = `${idPrefix}-eye-glow`;
+const strongGlowId = `${idPrefix}-strong-glow`;
+
+const colorVars = [
+  `--critter-shell-color: url(#${headGradId})`,
+  `--critter-screen-color: url(#${screenGradId})`,
+  `--critter-eye-color: url(#${eyeGradId})`,
+].join(";");
+---
+
+<critter-face-controller
+  class={cn("critter-face-container", className)}
+  data-animate={String(animate)}
+  data-expression="idle"
+  style={colorVars}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 160"
+    class="critter-face"
+    aria-label="Chat bot critter"
+    role="img"
+  >
+    <defs>
+      <!-- Head shell gradient -->
+      <radialGradient id={headGradId} cx="40%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="50%" stop-color="#E8EDF2" />
+        <stop offset="100%" stop-color="#C5D0D8" />
+      </radialGradient>
+
+      <!-- Screen gradient -->
+      <radialGradient id={screenGradId} cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stop-color="#152238" />
+        <stop offset="70%" stop-color="#0A1420" />
+        <stop offset="100%" stop-color="#040810" />
+      </radialGradient>
+
+      <!-- Eye gradient -->
+      <radialGradient id={eyeGradId} cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00E5FF" />
+        <stop offset="60%" stop-color="#00B8D4" />
+        <stop offset="100%" stop-color="#0088A3" />
+      </radialGradient>
+
+      <!-- Eye glow filter -->
+      <filter id={eyeGlowId} x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <!-- Strong glow for background bloom -->
+      <filter id={strongGlowId} x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <g id="critter-face-geometry" transform="translate(100 0) scale(0.94 1) translate(-100 0)">
+      <!-- HEAD: Continuous EVE-like egg dome with no hard side-to-bottom corner -->
+      <path
+        id="critter-head"
+        d="M 100 7
+           C 150 7, 181 44, 185 86
+           C 189 121, 152 141, 100 141
+           C 48 141, 11 121, 15 86
+           C 19 44, 50 7, 100 7
+           Z"
+        class="critter-head"
+      />
+
+      <!-- SPECULAR HIGHLIGHT: Glossy reflection on upper-left -->
+      <ellipse
+        cx="65"
+        cy="38"
+        rx="22"
+        ry="12"
+        fill="#FFFFFF"
+        opacity="0.25"
+        transform="rotate(-15, 65, 45)"
+        pointer-events="none"
+      />
+
+      <g
+        id="critter-screen-geometry"
+        transform="translate(100 80.2) scale(1.08) translate(-100 -80.2)"
+      >
+        <!-- FACEPLATE BEZEL: enlarged miniature echo of the outer head silhouette -->
+        <path
+          id="critter-bezel"
+          d="M 32 81
+             C 34 58, 60 39, 88 37
+             C 96 36, 104 36, 112 37
+             C 140 39, 166 58, 168 81
+             C 171 108, 143 123, 100 123
+             C 57 123, 29 108, 32 81
+             Z"
+          class="critter-bezel"
+        />
+
+        <!-- FACEPLATE SCREEN: same dome-and-bottom-curve language as the head -->
+        <path
+          id="critter-screen"
+          d="M 38 81
+             C 40 62, 63 47, 88 44
+             C 96 43, 104 43, 112 44
+             C 137 47, 160 62, 162 81
+             C 165 104, 140 117, 100 117
+             C 60 117, 35 104, 38 81
+             Z"
+          class="critter-screen"
+        />
+
+        <!-- SCREEN GLASS: faint upper reflection for curved glass depth -->
+        <path
+          d="M 52 66
+             C 68 53, 87 49, 100 48
+             C 119 49, 137 55, 149 67
+             C 136 61, 120 58, 100 58
+             C 80 58, 65 61, 52 66
+             Z"
+          fill="#FFFFFF"
+          opacity="0.08"
+          pointer-events="none"
+        />
+
+        <PixelEyes eyeGlowId={eyeGlowId} screenId="critter-screen" />
+      </g>
+    </g>
+  </svg>
+</critter-face-controller>
+
+<script>
+  import "./CritterFace/critterEyesController";
+</script>
+
+<style>
+  /* === BASE STYLES === */
+  .critter-face-container {
+    /* CSS variables for easy customization */
+    --critter-shell-color: #e8edf2;
+    --critter-shell-stroke: #d0d8e0;
+    --critter-bezel-color: #E8EDF2;
+    --critter-screen-color: #0a1420;
+    --critter-eye-color: #00e5ff;
+
+    /* Container — floating head dome */
+    width: 240px;
+    height: 192px;
+    position: relative;
+    display: block;
+  }
+
+  .critter-face {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* === HEAD === */
+  .critter-head {
+    fill: var(--critter-shell-color);
+    stroke: var(--critter-shell-stroke);
+    stroke-width: 1.5;
+  }
+
+  /* === BEZEL === */
+  .critter-bezel {
+    fill: var(--critter-bezel-color);
+    stroke: var(--critter-shell-stroke);
+    stroke-width: 1;
+  }
+
+  /* === SCREEN === */
+  .critter-screen {
+    fill: var(--critter-screen-color);
+  }
+
+</style>
