@@ -1,0 +1,82 @@
+---
+import { cn } from '../utils/utils.ts'
+import { engineeringHighlights } from '../data/portfolio.ts'
+import SectionHeading from './SectionHeading.astro'
+import FlowDiagram from './FlowDiagram.astro'
+import Chip from './Chip.astro'
+import CodeIcon from './icons/CodeIcon.astro'
+import CheckCircleIcon from './icons/CheckCircleIcon.astro'
+
+interface Props {
+    class?: string
+    hideHeading?: boolean
+}
+
+const { class: className, hideHeading = false } = Astro.props
+
+/** Convert FlowStep[] → deduplicated string[] for FlowDiagram */
+function flowSteps(flow: { from: string; to: string }[]): string[] {
+    const flat = flow.flatMap(s => [s.from, s.to])
+    return [...new Set(flat)]
+}
+
+const cardAccentColors = [
+    'from-amber-500/10 to-transparent',
+    'from-sky-500/10 to-transparent',
+    'from-violet-500/10 to-transparent',
+    'from-emerald-500/10 to-transparent',
+    'from-rose-500/10 to-transparent',
+    'from-teal-500/10 to-transparent',
+]
+---
+
+<section id="engineering-highlights" class={cn('flex flex-col gap-8', className)}>
+    {!hideHeading && (
+        <SectionHeading title="Engineering Highlights">
+            <CodeIcon slot="icon" class="size-4.5" />
+        </SectionHeading>
+    )}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {engineeringHighlights.map((item, i) => (
+            <div class="dark-smooth-shadow-lg bg-cloud-900 rounded-[14px] p-5 border border-cloud-700/40 flex flex-col gap-4 hover:border-cloud-600/50 transition-all duration-300 group relative overflow-hidden">
+                {/* Subtle gradient overlay */}
+                <div class={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none', cardAccentColors[i])} />
+                
+                {/* Content */}
+                <div class="relative z-10 flex flex-col gap-4">
+                    {/* Title */}
+                    <h3 class="text-cloud-200 font-semibold text-lg tracking-tight">{item.title}</h3>
+
+                    {/* Summary */}
+                    <p class="text-cloud-400 text-sm leading-relaxed">{item.summary}</p>
+
+                    {/* Mini flow diagram */}
+                    <FlowDiagram steps={flowSteps(item.flow)} class="flex-wrap" />
+
+                    {/* Evidence bullets */}
+                    <ul class="flex flex-col gap-2">
+                        {item.evidence.map((point) => (
+                            <li class="text-cloud-400 text-sm leading-relaxed flex items-start gap-2.5">
+                                <CheckCircleIcon class="size-3.5 text-cloud-600 mt-0.5 shrink-0 group-hover:text-cloud-500 transition-colors duration-300" />
+                                <span>{point}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Tags */}
+                    <div class="flex flex-wrap gap-1.5">
+                        {item.tags.map((tag) => (
+                            <Chip label={tag} />
+                        ))}
+                    </div>
+
+                    {/* Signal line */}
+                    <p class="text-cloud-500 text-xs leading-relaxed italic border-t border-cloud-700/40 pt-3 mt-auto">
+                        {item.signal}
+                    </p>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

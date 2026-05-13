@@ -11,6 +11,23 @@ import ProjectLogoCard from "../components/ProjectLogoCard.astro";
 import ProjectMobileCard from "../components/ProjectMobileCard.astro";
 import ContactCTA from "../components/ContactCTA.astro";
 import TechLabel from "../components/TechLabel.astro";
+import LeveragePillars from "../components/LeveragePillars.astro";
+import EngineeringHighlights from "../components/EngineeringHighlights.astro";
+import HowIWork from "../components/HowIWork.astro";
+import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CollapsibleSection from "../components/CollapsibleSection.astro";
+import { proofStats } from "../data/portfolio.ts";
+import ClockIcon from "../components/icons/ClockIcon.astro";
+import CodeIcon from "../components/icons/CodeIcon.astro";
+import BoxIcon from "../components/icons/BoxIcon.astro";
+import GlobeIcon from "../components/icons/GlobeIcon.astro";
+import LayersIcon from "../components/icons/LayersIcon.astro";
+import ActivityIcon from "../components/icons/ActivityIcon.astro";
+import PieChartIcon from "../components/icons/PieChartIcon.astro";
+import ZapIcon from "../components/icons/ZapIcon.astro";
+import SmileIcon from "../components/icons/SmileIcon.astro";
+import StackIcon from "../components/icons/StackIcon.astro";
 
 let techListOne = [
     {
@@ -82,9 +99,21 @@ let techListOne = [
 ];
 
 const ringSizeOne = 48; // Unit rem
+
+const statIcons = [ClockIcon, CodeIcon, BoxIcon, GlobeIcon, LayersIcon, ActivityIcon, PieChartIcon, ZapIcon]
+const statColors = [
+    'text-amber-400',
+    'text-sky-400',
+    'text-violet-400',
+    'text-emerald-400',
+    'text-rose-400',
+    'text-teal-400',
+    'text-orange-400',
+    'text-fuchsia-400',
+]
 ---
 
-<Layout title="Keanu Kent B. Gargar">
+<Layout title="Keanu Kent Gargar — Senior Frontend Engineer">
     <ContactCTA
         class="max-w-[26rem] w-full fixed bottom-0 z-[100] left-1/2 -translate-x-1/2 mb-2 md:mb-4"
     />
@@ -141,6 +170,7 @@ const ringSizeOne = 48; // Unit rem
                             <div class="relative">
                                 <img
                                     src="/images/ken.jpg"
+                                    alt="Keanu Kent"
                                     class="rounded-full max-w-[7rem]
                                     aspect-square z-50 relative"
                                 />
@@ -161,6 +191,7 @@ const ringSizeOne = 48; // Unit rem
                         text-slate-300 flex justify-center items-center"
                             >
                                 Hi, I am <img
+                                    alt=""
                                     class="size-[2rem] mx-2 rounded-lg inline-block"
                                     src="/images/logo.svg"
                                 /> Keanu Kent
@@ -170,12 +201,13 @@ const ringSizeOne = 48; // Unit rem
                             <div
                                 class="py-1 font-extralight text-slate-500 text-[1.1rem] leading-[1.45em]"
                             >
-                                A
                                 <span
                                     class="text-transparent bg-clip-text bg-gradient-to-r from-slate-300/80 via-[#54859c] via-70% to-slate-400/70"
-                                    >senior full-stack engineer</span
+                                    >Senior frontend engineer</span
                                 >
-                                building AI-powered products.
+                                building AI-powered product workflows,
+                                design systems, and modernized product
+                                interfaces.
                             </div>
                         </div>
                     </div>
@@ -204,157 +236,227 @@ const ringSizeOne = 48; // Unit rem
                 </div>
             </div>
         </div>
+        <!-- Proof Stats -->
+        <div
+            class="bg-cloud-900/60 backdrop-blur-md w-full border-y border-cloud-800/40"
+        >
+            <div
+                class="max-w-[72rem] mx-auto px-4 py-6 flex flex-wrap justify-center gap-2 md:gap-3"
+            >
+                {
+                    proofStats.map((stat, i) => {
+                        const Icon = statIcons[i]
+                        const colorClass = statColors[i]
+                        return (
+                            <div class="flex flex-col items-center justify-center min-w-[6.5rem] max-w-[9rem] px-3 py-2.5 rounded-xl bg-cloud-800/30 border border-cloud-700/20 dark-smooth-shadow-lg hover:bg-cloud-800/50 hover:border-cloud-600/30 transition-all duration-300 group">
+                                <Icon class:list={['size-4.5 mb-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300', colorClass]} />
+                                <span class="text-sm font-semibold text-cloud-200 leading-tight text-center">
+                                    {stat.value}
+                                </span>
+                                <span class="text-[11px] text-cloud-450 leading-tight text-center mt-0.5">
+                                    {stat.label}
+                                </span>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
         <div
             class="bg-cloud-950 relative w-full max-w-[1500px] flex flex-col
-            justify-center items-center"
+            justify-center items-center pb-24"
         >
-            <!-- <InfoSectionBG /> -->
             <div
                 class="relative flex flex-col mx-auto items-center justify-start w-full min-h-[100svh] h-full"
             >
-                <div class="z-50">
-                    <SkillsView />
+                <!-- Where I Create Leverage -->
+                <div class="max-w-[72rem] mx-auto w-full mb-12">
+                    <LeveragePillars />
                 </div>
-                <div
-                    class="z-0 bg-cloud-950 w-[100vw] [box-shadow:0px_0px_24px_8px_rgba(17,23,40,1)]"
+
+                <!-- Engineering Highlights -->
+                <CollapsibleSection
+                    title="Engineering Highlights"
+                    class="w-full max-w-[72rem] px-4 mb-8"
                 >
-                    <div class="min-h-[12rem] mx-auto w-full max-w-[1800px]">
-                        <ProjectsCarousel />
-                    </div>
-                </div>
-                <div
-                    class="relative -mt-[2rem] xl:-mt-[4rem] mb-4 max-w-[72rem] px-4 w-full flex flex-col items-center
-                    justify-center gap-4"
+                    <CodeIcon slot="icon" class="size-4.5" />
+                    <EngineeringHighlights hideHeading />
+                </CollapsibleSection>
+
+                <!-- How I Work -->
+                <CollapsibleSection
+                    title="How I Work"
+                    class="w-full max-w-[72rem] px-4 mb-8"
                 >
-                    <div
-                        class="flex
-                    flex-row flex-wrap gap-4 justify-center items-center"
-                    >
-                        <ProjectCard
-                            endColor="#2794C5"
-                            startColor="#250C6F"
-                            accentColor="#6EB6D7"
-                            title="WMP Property Solutions"
-                            skills={["Design", "Web Development"]}
-                            photoName="ian"
-                            class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
-                        />
-                        <ProjectCard
-                            startColor="#080808"
-                            endColor="#00365F"
-                            accentColor="#6293BB"
-                            title="Property Management Virtual Assistant"
-                            skills={["Design", "VueJS"]}
-                            photoName="pmva"
-                            class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
-                        />
-                        <div
-                            class="flex flex-row flex-wrap h-fit w-full
-                        rounded-2xl justify-center gap-4"
-                        >
-                            <ProjectMobileCard
-                                startColor="#000000"
-                                endColor="#0E4157"
-                                titleColor="#59C7F6"
-                                textColor="#97DDFB"
-                                photoName="woodbridge"
-                                title="myWoodbridge"
-                                text="Learning Management System for Kinder & Pre-school"
-                            />
-                            <ProjectMobileCard
-                                startColor="#000000"
-                                endColor="#601D1D"
-                                titleColor="#FE8888"
-                                textColor="#FAB9B9"
-                                photoName="sos"
-                                title="SOS"
-                                text="SOS System for the protection & safety of a school premises."
-                            />
-                            <ProjectMobileCard
-                                startColor="#000000"
-                                endColor="#072F2F"
-                                titleColor="#2FC7C7"
-                                textColor="#A1FFFF"
-                                photoName="country"
-                                title="Country Tracker"
-                                text="Easy to use MVP app on country tracking for travelers."
-                            />
-                        </div>
-                        <ProjectCard
-                            startColor="#0A1314"
-                            endColor="#00464B"
-                            accentColor="#3DBEA7"
-                            title="Regis Green Property"
-                            skills={["Design", "Web Development"]}
-                            photoName="regis"
-                            class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
-                        />
-                        <ProjectCard
-                            startColor="#242B46"
-                            endColor="#3D3717"
-                            accentColor="#F5D99C"
-                            title="Ianelli Estates"
-                            skills={["Design", "Web Development"]}
-                            photoName="ian"
-                            class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
-                        />
+                    <SmileIcon slot="icon" class="size-4.5" />
+                    <HowIWork hideHeading />
+                </CollapsibleSection>
+
+                <!-- Capability Stack -->
+                <CollapsibleSection
+                    title="My Stack"
+                    class="w-full max-w-[72rem] px-4 mb-8 z-50"
+                >
+                    <StackIcon slot="icon" class="size-4.5" />
+                    <div class="z-50">
+                        <SkillsView hideHeading />
                     </div>
-                    <div
-                        class="flex flex-row flex-wrap w-full items-center justify-center gap-4"
-                    >
-                        <div
-                            class="flex flex-col items-center justify-center max-w-[calc(50%-0.5rem)]
-                        min-w-[28rem] w-full aspect-[1] md:aspect-[1.2]"
-                        >
-                            <div
-                                class="flex flex-row items-center justify-center h-fit w-fi"
-                            >
-                                <ProjectLogoCard
-                                    accentColor="#FFD7D1"
-                                    title="Orchid Property Management"
-                                    photoName="orchid"
-                                />
-                                <ProjectLogoCard
-                                    accentColor="#D0E4FF"
-                                    title="Campbell Developers"
-                                    photoName="campbell"
-                                />
-                            </div>
-                            <div
-                                class="flex flex-row items-center justify-center h-fit w-fit"
-                            >
-                                <ProjectLogoCard
-                                    accentColor="#CCD0D5"
-                                    title="Property Management Virtual Assistant"
-                                    photoName="pmva"
-                                />
-                                <ProjectLogoCard
-                                    accentColor="#DCE5F9"
-                                    title="BEGREAT Property LTD"
-                                    photoName="bgp"
-                                />
-                            </div>
-                            <div class="my-2">
-                                <TechLabel
-                                    accentColor="#A7B8E8"
-                                    label="Logo Designs"
-                                />
-                            </div>
-                        </div>
-                        <ProjectCard
-                            startColor="#193F71"
-                            endColor="#613A26"
-                            accentColor="#F99E70"
-                            title="Attain Property Solutions Limited"
-                            skills={["Design", "Web Development"]}
-                            photoName="aps"
-                            class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem] h-auto lg:h-full max-sm:max-h-[24rem]"
-                        />
-                    </div>
-                </div>
-                <div class="z-50 mt-24 mb-12">
+                </CollapsibleSection>
+
+                <!-- Experience Timeline -->
+                <div class="max-w-[72rem] mx-auto w-full mb-12 px-4">
                     <TimelineView />
                 </div>
+
+                <!-- Currently Building -->
+                <div class="max-w-[72rem] mx-auto w-full mb-12">
+                    <CurrentlyBuilding />
+                </div>
+
+                <!-- Earlier Visual Work / Design Archive -->
+                <CollapsibleSection
+                    title="Earlier Visual Work"
+                    subtitle="Earlier visual and freelance work across property websites, mobile prototypes, landing pages, and logo design. Kept here as a design archive; my current focus is frontend systems, AI workflows, and product engineering."
+                    class="w-full max-w-[72rem] px-4 mt-12 mb-8"
+                >
+                    <div
+                        class="z-0 bg-cloud-950 w-[100vw] [box-shadow:0px_0px_24px_8px_rgba(17,23,40,1)]"
+                    >
+                        <div class="min-h-[12rem] mx-auto w-full max-w-[1800px]">
+                            <ProjectsCarousel />
+                        </div>
+                    </div>
+                    <div
+                        class="relative -mt-[2rem] xl:-mt-[4rem] mb-4 max-w-[72rem] px-4 w-full flex flex-col items-center
+                        justify-center gap-4"
+                    >
+                        <div
+                            class="flex
+                        flex-row flex-wrap gap-4 justify-center items-center overflow-hidden"
+                        >
+                            <ProjectCard
+                                endColor="#2794C5"
+                                startColor="#250C6F"
+                                accentColor="#6EB6D7"
+                                title="WMP Property Solutions"
+                                skills={["Design", "Web Development"]}
+                                photoName="ian"
+                                class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
+                            />
+                            <ProjectCard
+                                startColor="#080808"
+                                endColor="#00365F"
+                                accentColor="#6293BB"
+                                title="Property Management Virtual Assistant"
+                                skills={["Design", "VueJS"]}
+                                photoName="pmva"
+                                class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
+                            />
+                                <div
+                                    class="flex flex-row flex-wrap h-fit w-full
+                                rounded-2xl justify-center gap-4 overflow-hidden"
+                            >
+                                <ProjectMobileCard
+                                    startColor="#000000"
+                                    endColor="#0E4157"
+                                    titleColor="#59C7F6"
+                                    textColor="#97DDFB"
+                                    photoName="woodbridge"
+                                    title="myWoodbridge"
+                                    text="Learning Management System for Kinder & Pre-school"
+                                />
+                                <ProjectMobileCard
+                                    startColor="#000000"
+                                    endColor="#601D1D"
+                                    titleColor="#FE8888"
+                                    textColor="#FAB9B9"
+                                    photoName="sos"
+                                    title="SOS"
+                                    text="SOS System for the protection & safety of a school premises."
+                                />
+                                <ProjectMobileCard
+                                    startColor="#000000"
+                                    endColor="#072F2F"
+                                    titleColor="#2FC7C7"
+                                    textColor="#A1FFFF"
+                                    photoName="country"
+                                    title="Country Tracker"
+                                    text="Easy to use MVP app on country tracking for travelers."
+                                />
+                            </div>
+                            <ProjectCard
+                                startColor="#0A1314"
+                                endColor="#00464B"
+                                accentColor="#3DBEA7"
+                                title="Regis Green Property"
+                                skills={["Design", "Web Development"]}
+                                photoName="regis"
+                                class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
+                            />
+                            <ProjectCard
+                                startColor="#242B46"
+                                endColor="#3D3717"
+                                accentColor="#F5D99C"
+                                title="Ianelli Estates"
+                                skills={["Design", "Web Development"]}
+                                photoName="ian"
+                                class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem]"
+                            />
+                        </div>
+                        <div
+                            class="flex flex-row flex-wrap w-full items-center justify-center gap-4 overflow-hidden"
+                        >
+                            <div
+                                class="flex flex-col items-center justify-center max-w-[calc(50%-0.5rem)]
+                            min-w-0 md:min-w-[28rem] w-full aspect-[1] md:aspect-[1.2]"
+                            >
+                                <div
+                                    class="flex flex-row items-center justify-center h-fit w-fi"
+                                >
+                                    <ProjectLogoCard
+                                        accentColor="#FFD7D1"
+                                        title="Orchid Property Management"
+                                        photoName="orchid"
+                                    />
+                                    <ProjectLogoCard
+                                        accentColor="#D0E4FF"
+                                        title="Campbell Developers"
+                                        photoName="campbell"
+                                    />
+                                </div>
+                                <div
+                                    class="flex flex-row items-center justify-center h-fit w-fit"
+                                >
+                                    <ProjectLogoCard
+                                        accentColor="#CCD0D5"
+                                        title="Property Management Virtual Assistant"
+                                        photoName="pmva"
+                                    />
+                                    <ProjectLogoCard
+                                        accentColor="#DCE5F9"
+                                        title="BEGREAT Property LTD"
+                                        photoName="bgp"
+                                    />
+                                </div>
+                                <div class="my-2">
+                                    <TechLabel
+                                        accentColor="#A7B8E8"
+                                        label="Logo Designs"
+                                    />
+                                </div>
+                            </div>
+                            <ProjectCard
+                                startColor="#193F71"
+                                endColor="#613A26"
+                                accentColor="#F99E70"
+                                title="Attain Property Solutions Limited"
+                                skills={["Design", "Web Development"]}
+                                photoName="aps"
+                                class="max-w-[calc(50%-0.5rem)] md:min-w-[26rem] min-w-[22rem] h-auto lg:h-full max-sm:max-h-[24rem]"
+                            />
+                    </div>
+                </CollapsibleSection>
+            </div>
             </div>
         </div>
     </main>

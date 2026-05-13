@@ -6,16 +6,16 @@ import TimelineLearn from './TimelineLearn.astro'
 const { heading, subHeading, skills, date } = Astro.props
 ---
 
-<div>
+<div class="group">
     <TimelineStep />
     <div class="py-2.5 gap-1">
         <TimelineDate date={date}>
             <slot slot="icon" name="icon" />
             <div class="flex flex-col items-start justify-start">
-                {!!heading && <div>{heading}</div>}
+                {!!heading && <div class="text-cloud-200 font-medium group-hover:text-cloud-100 transition-colors duration-200">{heading}</div>}
                 {
                     !!subHeading && (
-                        <div class="text-rose-300 text-base font-light">
+                        <div class="text-rose-300/90 text-sm font-light">
                             {subHeading}
                         </div>
                     )

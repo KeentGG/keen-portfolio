@@ -1,0 +1,35 @@
+---
+import { cn } from '../utils/utils.ts'
+
+interface Props {
+    steps: string[]
+    class?: string
+}
+
+const { steps, class: className } = Astro.props
+---
+
+<div class={cn('flex items-center gap-2 flex-wrap', className)}>
+    {steps.map((step, i) => (
+        <div class="flex items-center gap-2">
+            <span
+                class="text-xs font-medium text-cloud-300 bg-cloud-800/60 border border-cloud-700/40 rounded-lg px-3 py-1.5 whitespace-nowrap hover:bg-cloud-700/60 transition-colors duration-200"
+            >
+                {step}
+            </span>
+            {i < steps.length - 1 && (
+                <svg
+                    class="w-3.5 h-3.5 text-cloud-600 shrink-0"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M6 4l4 4-4 4" />
+                </svg>
+            )}
+        </div>
+    ))}
+</div>

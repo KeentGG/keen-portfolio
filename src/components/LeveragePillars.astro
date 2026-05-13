@@ -1,0 +1,195 @@
+---
+import { leveragePillars } from '../data/portfolio.ts'
+import SectionHeading from './SectionHeading.astro'
+import ZapIcon from './icons/ZapIcon.astro'
+import BoxIcon from './icons/BoxIcon.astro'
+import WrenchIcon from './icons/WrenchIcon.astro'
+import LayersIcon from './icons/LayersIcon.astro'
+import ActivityIcon from './icons/ActivityIcon.astro'
+import UsersIcon from './icons/UsersIcon.astro'
+
+const pillarIcons = [ZapIcon, BoxIcon, WrenchIcon, LayersIcon, ActivityIcon, UsersIcon]
+const pillarHover = [
+    { text: 'group-hover:text-amber-400', tagText: 'group-hover:text-amber-400', tagBg: 'group-hover:bg-amber-400/10', tagBorder: 'group-hover:border-amber-400/20' },
+    { text: 'group-hover:text-sky-400', tagText: 'group-hover:text-sky-400', tagBg: 'group-hover:bg-sky-400/10', tagBorder: 'group-hover:border-sky-400/20' },
+    { text: 'group-hover:text-emerald-400', tagText: 'group-hover:text-emerald-400', tagBg: 'group-hover:bg-emerald-400/10', tagBorder: 'group-hover:border-emerald-400/20' },
+    { text: 'group-hover:text-violet-400', tagText: 'group-hover:text-violet-400', tagBg: 'group-hover:bg-violet-400/10', tagBorder: 'group-hover:border-violet-400/20' },
+    { text: 'group-hover:text-rose-400', tagText: 'group-hover:text-rose-400', tagBg: 'group-hover:bg-rose-400/10', tagBorder: 'group-hover:border-rose-400/20' },
+    { text: 'group-hover:text-teal-400', tagText: 'group-hover:text-teal-400', tagBg: 'group-hover:bg-teal-400/10', tagBorder: 'group-hover:border-teal-400/20' },
+]
+---
+
+<section class="px-4" id="leverage-pillars">
+    <SectionHeading
+        title="Where I Create Leverage"
+        subtitle="Six areas where I consistently add production value — each backed by concrete work, not abstract claims."
+        class="mb-10"
+    >
+        <ZapIcon slot="icon" class="size-4.5" />
+    </SectionHeading>
+
+    <div class="bento-grid rounded-2xl border border-cloud-700/30 overflow-hidden">
+        {leveragePillars.map((pillar, i) => {
+            const Icon = pillarIcons[i]
+            const hover = pillarHover[i]
+            const isLastCol = (i + 1) % 3 === 0
+            return (
+                <div
+                    class:list={[
+                        'leverage-card group relative bg-cloud-900/40 p-7 transition-colors duration-300 hover:bg-cloud-800/50',
+                        isLastCol ? 'bento-cell-last-col' : 'bento-cell',
+                    ]}
+                >
+                    <h3 class:list={['text-cloud-100 font-bold text-xl leading-snug tracking-tight transition-colors duration-300 group-hover:text-white', 'relative z-10']}>
+                        {pillar.title}
+                    </h3>
+
+                    <div class:list={['flex flex-row flex-wrap gap-1.5 mt-4', 'relative z-10']}>
+                        {pillar.tags.slice(0, 3).map((tag) => (
+                            <span class:list={['inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium border border-cloud-700/40 text-cloud-500 bg-cloud-800/40 transition-colors duration-300', hover.tagText, hover.tagBg, hover.tagBorder]}>
+                                {tag}
+                            </span>
+                        ))}
+                        {pillar.tags.length > 3 && (
+                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium border border-cloud-700/30 text-cloud-500 bg-cloud-800/30">
+                                +{pillar.tags.length - 3}
+                            </span>
+                        )}
+                    </div>
+
+                    {/* Freeform icon — bottom-right, faded, partially cut off */}
+                    <div class="absolute -bottom-2 -right-2 pointer-events-none icon-fade-mask">
+                        <Icon class:list={['size-28 text-cloud-800/60 transition-all duration-500', hover.text, 'group-hover:opacity-80']} />
+                    </div>
+
+                    {/* Hidden collapsible content for future use */}
+                    {/*
+                    <div class="px-5 pb-5 overflow-hidden">
+                        <p class="text-cloud-400 text-sm leading-relaxed mb-3">
+                            {pillar.description}
+                        </p>
+                        <ul class="space-y-2 mb-4">
+                            {pillar.evidence.map((item) => (
+                                <li class="flex items-start gap-2.5 text-cloud-400 text-xs leading-relaxed">
+                                    <span class="mt-1 shrink-0 size-1.5 rounded-full bg-cloud-600"></span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <div class="flex flex-row flex-wrap gap-1.5">
+                            {pillar.tags.map((tag) => (
+                                <Chip label={tag} />
+                            ))}
+                        </div>
+                    </div>
+                    */}
+                </div>
+            )
+        })}
+    </div>
+</section>
+
+<script>
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible')
+                    observer.unobserve(entry.target)
+                }
+            })
+        },
+        { threshold: 0.1 }
+    )
+
+    document.querySelectorAll('.leverage-card').forEach((card) => {
+        observer.observe(card)
+    })
+</script>
+
+<style>
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1023px) {
+        .bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .bento-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .bento-cell {
+        border-right: 1px solid rgba(40, 54, 94, 0.3);
+        border-bottom: 1px solid rgba(40, 54, 94, 0.3);
+    }
+
+    .bento-cell-last-col {
+        border-bottom: 1px solid rgba(40, 54, 94, 0.3);
+    }
+
+    /* Remove bottom border from last row */
+    .bento-grid .leverage-card:nth-last-child(-n+3) {
+        border-bottom: none;
+    }
+
+    /* Remove right border from last column cells */
+    @media (min-width: 1024px) {
+        .bento-grid .leverage-card:nth-child(3n) {
+            border-right: none;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .bento-grid .leverage-card:nth-child(2n) {
+            border-right: none;
+        }
+        .bento-grid .leverage-card:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .bento-cell,
+        .bento-cell-last-col {
+            border-right: none;
+            border-bottom: 1px solid rgba(40, 54, 94, 0.3);
+        }
+        .bento-grid .leverage-card:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* Icon fade from bottom-right */
+    .icon-fade-mask {
+        -webkit-mask-image: radial-gradient(ellipse at 100% 100%, black 10%, transparent 70%);
+        mask-image: radial-gradient(ellipse at 100% 100%, black 10%, transparent 70%);
+    }
+
+    /* Entrance animation */
+    .leverage-card {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    .leverage-card.is-visible {
+        animation: leverage-fade-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes leverage-fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

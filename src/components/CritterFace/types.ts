@@ -4,6 +4,29 @@ export type EyeExpression = "idle" | "blink" | "thinking" | "surprised";
 
 export type CanvasOffset = readonly [x: number, y: number];
 
+export type EyeTransitionEasingName =
+  | "linear"
+  | "easeInCubic"
+  | "easeOutCubic"
+  | "easeInOutCubic";
+
+export type EyeMorphMode = "sdf" | "opacity";
+
+export interface EyeTransitionOptions {
+  /** Transition duration in milliseconds. Default: 220 */
+  duration?: number;
+  /** Easing function name or custom function. Default: "easeOutCubic" */
+  easing?: EyeTransitionEasingName | ((t: number) => number);
+  /** Quantize eased progress to N discrete steps (undefined = smooth). */
+  steps?: number;
+  /** Morph algorithm. Default: "sdf" */
+  mode?: EyeMorphMode;
+  /** SDF feather radius — higher = softer edge. Default: 1.25 */
+  feather?: number;
+  /** Opacity threshold for SDF binary mask. Default: 0.12 */
+  threshold?: number;
+}
+
 /**
  * A local per-eye frame. The map describes only the eye artwork, not where it
  * appears on the screen. Placement is owned by the face controller.

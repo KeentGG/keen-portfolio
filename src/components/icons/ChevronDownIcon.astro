@@ -1,0 +1,8 @@
+---
+import { cn } from '../../utils/utils.ts'
+const { class: className } = Astro.props
+---
+
+<svg class={cn('stroke-current size-full', className)} viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9"/>
+</svg>

@@ -3,12 +3,12 @@ const { date } = Astro.props
 ---
 
 <div
-    class="flex flex-row gap-2 items-center text-sm font-medium
+    class="flex flex-row gap-2.5 items-center text-sm font-medium
     text-cloud-400"
 >
     <slot name="icon" />
     <div class="flex flex-row w-full justify-between pr-6">
         <slot />
-        {date != undefined && <div class="text-cloud-450">{date}</div>}
+        {date != undefined && <div class="text-cloud-500 text-xs font-mono tracking-tight">{date}</div>}
     </div>
 </div>

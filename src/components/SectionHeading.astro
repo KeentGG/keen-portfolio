@@ -1,0 +1,25 @@
+---
+import { cn } from '../utils/utils.ts'
+
+interface Props {
+    title: string
+    subtitle?: string
+    class?: string
+}
+
+const { title, subtitle, class: className } = Astro.props
+---
+
+<div class={cn('flex flex-col gap-2', className)}>
+    <div class="flex items-center gap-2.5">
+        {Astro.slots.has('icon') && (
+            <div class="flex items-center justify-center size-8 rounded-lg bg-cloud-800/60 border border-cloud-700/40 text-cloud-400">
+                <slot name="icon" />
+            </div>
+        )}
+        <h2 class="text-cloud-200 font-semibold text-xl tracking-tight">{title}</h2>
+    </div>
+    {subtitle && (
+        <p class="text-cloud-450 text-sm leading-relaxed pl-[2.625rem]">{subtitle}</p>
+    )}
+</div>

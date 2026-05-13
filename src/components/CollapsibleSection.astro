@@ -1,0 +1,80 @@
+---
+import { cn } from '../utils/utils.ts'
+
+interface Props {
+    title: string
+    subtitle?: string
+    defaultOpen?: boolean
+    class?: string
+}
+
+const { title, subtitle, defaultOpen = false, class: className } = Astro.props
+---
+
+<details
+    class={cn('border border-cloud-800/40 rounded-[14px] bg-cloud-900/30 hover:border-cloud-700/50 transition-all duration-300', className)}
+    open={defaultOpen}
+>
+    <summary
+        class="flex items-center justify-between cursor-pointer list-none px-5 py-4
+            hover:bg-cloud-800/30 transition-colors duration-200 rounded-[14px]"
+    >
+        <div class="flex items-center gap-3">
+            {Astro.slots.has('icon') && (
+                <div class="flex items-center justify-center size-8 rounded-lg bg-cloud-800/60 border border-cloud-700/40 text-cloud-400">
+                    <slot name="icon" />
+                </div>
+            )}
+            <div class="flex flex-col gap-1">
+                <h2 class="text-cloud-200 font-semibold text-lg tracking-tight">{title}</h2>
+                {subtitle && (
+                    <p class="text-cloud-400 text-sm leading-relaxed">{subtitle}</p>
+                )}
+            </div>
+        </div>
+        <svg
+            class="collapsible-chevron w-5 h-5 text-cloud-500 transition-transform duration-300 shrink-0 ml-4 group-hover:text-cloud-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+            />
+        </svg>
+    </summary>
+    <div class="px-5 pb-5 overflow-hidden">
+        <slot />
+    </div>
+</details>
+
+<style>
+    /* Hide default marker */
+    details > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details > summary::marker {
+        display: none;
+        content: '';
+    }
+
+    /* Smooth open animation */
+    details[open] > div {
+        animation: collapsible-slide-down 0.3s ease-out;
+    }
+
+    @keyframes collapsible-slide-down {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

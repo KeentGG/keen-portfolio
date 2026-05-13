@@ -1,0 +1,76 @@
+---
+import { cn } from '../utils/utils.ts'
+import { currentlyBuilding, type CurrentlyBuilding } from '../data/portfolio.ts'
+import SectionHeading from './SectionHeading.astro'
+import WrenchIcon from './icons/WrenchIcon.astro'
+
+interface Props {
+    class?: string
+}
+
+const { class: className } = Astro.props
+
+/** Map status enum to human-readable badge label */
+function statusLabel(status: CurrentlyBuilding['status']): string {
+    switch (status) {
+        case 'active-rnd':
+            return 'Active R&D'
+        case 'production':
+            return 'Production'
+        case 'exploration':
+            return 'Exploration'
+    }
+}
+---
+
+<section class={cn('px-4', className)}>
+    <SectionHeading
+        title="Currently Building"
+        subtitle="What I'm working on right now — not shipped yet, but actively developing."
+        class="mb-6"
+    >
+        <WrenchIcon slot="icon" class="size-4.5" />
+    </SectionHeading>
+
+    <div
+        class={cn(
+            'dark-smooth-shadow-lg bg-cloud-900 rounded-[14px] p-6 md:p-8',
+            'border border-cloud-700/40 border-l-[3px] border-l-rose-500/60',
+            'flex flex-col gap-4 hover:border-cloud-600/50 transition-all duration-300'
+        )}
+    >
+        {/* Header row: title + status badge */}
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h3 class="text-cloud-200 font-semibold text-lg tracking-tight">
+                {currentlyBuilding.title}
+            </h3>
+
+            <span
+                class={cn(
+                    'inline-flex items-center self-start gap-1.5',
+                    'bg-rose-500/10 border border-rose-500/20',
+                    'text-rose-300 text-xs font-medium',
+                    'rounded-full px-3 py-1'
+                )}
+            >
+                <span class="size-1.5 rounded-full bg-rose-400 animate-pulse" />
+                {statusLabel(currentlyBuilding.status)}
+            </span>
+        </div>
+
+        {/* Subtitle */}
+        <p class="text-cloud-400 text-sm leading-relaxed">
+            {currentlyBuilding.subtitle}
+        </p>
+
+        {/* Full description */}
+        <p class="text-cloud-400 text-sm leading-relaxed">
+            {currentlyBuilding.description}
+        </p>
+
+        {/* Honest framing footer */}
+        <p class="text-cloud-500 text-xs leading-relaxed italic border-t border-cloud-700/40 pt-3 mt-1">
+            Early results are positive — still needs more polish before production use, but the direction is already useful for turning messy codebases into clearer implementation plans.
+        </p>
+    </div>
+</section>

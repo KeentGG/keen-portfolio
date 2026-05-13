@@ -1,0 +1,62 @@
+---
+import { howIWork } from '../data/portfolio.ts'
+import SectionHeading from './SectionHeading.astro'
+import BentoCard from './BentoCard.astro'
+import SmileIcon from './icons/SmileIcon.astro'
+import PenToolIcon from './icons/PenToolIcon.astro'
+import ShieldCheckIcon from './icons/ShieldCheckIcon.astro'
+import ZapIcon from './icons/ZapIcon.astro'
+import UsersIcon from './icons/UsersIcon.astro'
+
+interface Props {
+    hideHeading?: boolean
+}
+
+const { hideHeading = false } = Astro.props
+
+const workIcons = [SmileIcon, PenToolIcon, ShieldCheckIcon, ZapIcon, UsersIcon]
+const workColors = [
+    'text-amber-400 bg-amber-400/10 border-amber-400/20',
+    'text-sky-400 bg-sky-400/10 border-sky-400/20',
+    'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+    'text-violet-400 bg-violet-400/10 border-violet-400/20',
+    'text-rose-400 bg-rose-400/10 border-rose-400/20',
+]
+---
+
+<section class="px-4">
+    {!hideHeading && (
+        <SectionHeading
+            title="How I Work"
+            class="mb-4"
+        >
+            <SmileIcon slot="icon" class="size-4.5" />
+        </SectionHeading>
+    )}
+
+    <p class="text-cloud-400 text-sm leading-relaxed max-w-3xl mb-6">
+        I'm not defined only by the stack I already know. A lot of my career has been
+        ramping into unfamiliar domains, learning the system quickly, then turning rough
+        requirements into usable product interfaces. I'm strongest when frontend engineering,
+        product design, and practical AI workflows overlap.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {howIWork.map((pillar, i) => {
+            const Icon = workIcons[i]
+            const colorClass = workColors[i]
+            return (
+                <BentoCard heading={pillar.title} class="group">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class:list={['flex items-center justify-center size-7 rounded-md border shrink-0', colorClass]}>
+                            <Icon class="size-3.5" />
+                        </div>
+                    </div>
+                    <p class="text-cloud-400 text-sm leading-relaxed">
+                        {pillar.description}
+                    </p>
+                </BentoCard>
+            )
+        })}
+    </div>
+</section>

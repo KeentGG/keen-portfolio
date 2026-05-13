@@ -6,11 +6,13 @@ const { heading, class: className } = Astro.props
 
 <div
     class={cn(
-        'dark-smooth-shadow-lg bg-cloud-900 rounded-[12px] p-4 border border-cloud-700/40',
+        'dark-smooth-shadow-lg bg-cloud-900 rounded-[14px] p-5 border border-cloud-700/40',
+        'hover:border-cloud-600/50 transition-all duration-300',
+        'group',
         className
     )}
 >
-    <h3 class="text-cloud-300 font-medium text-lg mb-4">{heading}</h3>
+    <h3 class="text-cloud-200 font-semibold text-lg mb-4 tracking-tight">{heading}</h3>
     <div>
         <slot />
     </div>
