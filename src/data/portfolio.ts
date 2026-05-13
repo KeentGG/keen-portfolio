@@ -140,30 +140,6 @@ export const leveragePillars: LeveragePillar[] = [
     tags: ["jQuery to React", "Performance", "Dead Code Removal", "Visual Refresh"],
   },
   {
-    title: "Complex Product Logic",
-    description:
-      "Handling the messy, state-heavy, calculation-heavy frontend work that separates senior engineers from interface-only developers.",
-    evidence: [
-      "Spreadsheet-like financial table with dynamic calculation logic and Xero/QuickBooks integrations",
-      "LMS grading, enrollment, and quiz assignment features",
-      "Cross-framework work across React, Vue, Angular, and Flutter",
-      "Objective-C iOS SDK maintenance for EloTouch POS systems at scale",
-    ],
-    tags: ["Vue", "Financial UI", "Fintech", "LMS", "Cross-Framework"],
-  },
-  {
-    title: "Data & Automation Pipelines",
-    description:
-      "Backend automation and data infrastructure that supports AI/ML training and production monitoring.",
-    evidence: [
-      "30+ Python crawlers for news and political websites",
-      "Backend monitoring/tracking system for crawler health and data quality",
-      "AI/ML training data pipeline support for LLM workflows",
-      "Self-hosted infrastructure on VPS with Docker and Tailscale",
-    ],
-    tags: ["Python", "Crawlers", "Docker", "Monitoring", "Infrastructure"],
-  },
-  {
     title: "End-to-End Ownership",
     description:
       "Proposing architecture, aligning with stakeholders, and shipping the first production version — not waiting for tickets.",
